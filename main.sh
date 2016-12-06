@@ -2,17 +2,21 @@
 
 vendors=( cdh emr hdp mapr );
 
+tmpDir=temp;
 
 NewLine=$'\n';
-rootDir=/d/mvn_shim3/;
 metaFolder=/src/META-INF;
 orgFolder=/src/org;
 resourcesFolder=/package-res/*;
 mavenTreeFile=tree.txt;
 antTreeFile=antree.txt;
 DependencyTagsFile=dependency.xml;
-pluginFile=plugin.xml;
+pluginFile=assembly.xml;
 currDir=$(pwd);
+rootDir=${currDir}/temp/;
+
+archNameArtifact="";
+archNameVersion="";
 #----------------------------------------
 buildXML=common-shims-build.xml;
 
@@ -356,14 +360,14 @@ _makeDir() {
 
 _copyFiles() {
 	f=$1;
-	local srcMeta="./"${f}${metaFolder};
-	local srcOrg="./"${f}${orgFolder};
+	#local srcMeta="./"${f}${metaFolder};
+	#local srcOrg="./"${f}${orgFolder};
 	local resources="./"${f}${resourcesFolder};
-	local srcDest="$rootDir"${f}"/src/main/java";
+	#local srcDest="$rootDir"${f}"/src/main/java";
 	local resDest="$rootDir"${f}"/src/main/resources";
 
-	cp -r ${srcMeta} ${srcDest}
-	cp -r ${srcOrg} ${srcDest}
+	# cp -r ${srcMeta} ${srcDest}
+	# cp -r ${srcOrg} ${srcDest}
 	cp -r ${resources} ${resDest}
 
 }
@@ -374,11 +378,11 @@ _copyFiles() {
 #-----------------------------------
 _createProject() {
 
-	local _shimSrcDir="$rootDir"$1"/src/main/java";
+	#local _shimSrcDir="$rootDir"$1"/src/main/java";
 	local _shimResourceDir="$rootDir"$1"/src/main/resources";
-	local _shimAssemblyDir="$rootDir"$1"/src/main/assembly/descriptors";
+	local _shimAssemblyDir="$rootDir"$1"/src/main/descriptor";
 
-	_makeDir "$_shimSrcDir"
+	#_makeDir "$_shimSrcDir"
 	_makeDir "$_shimResourceDir"
 	_makeDir "$_shimAssemblyDir"
 
@@ -422,6 +426,17 @@ _createXML() {
 	rm -f temptree1.txt
 
 
+	#ARCHIVE NAME PROPERTIES
+	archNameArtifact=$(sed -n '/<artifactId>/{p;q;}' pom.xml)
+	archNameArtifact=$(echo $archNameArtifact | sed 's/<artifactId>//g;s/<\/artifactId>//g')
+
+	archNameVersion=$(sed -n '/<version>/{p;q;}' pom.xml)
+	archNameVersion=$(echo $archNameVersion | sed 's/<version>//g;s/<\/version>//g')
+
+
+
+
+
 	#sed '/<exclusions>/,/<\/exclusions>/d' pom.xml > OO.xml
 
 	#do not forget pass file name as $1 parameter to get vmn dependency tree
@@ -440,7 +455,8 @@ _createXML() {
 	cd dist
 
 	#get name from build.properties file [NEED TO PARSE IT!!!!!!!!]
-	archName='pentaho-hadoop-shims-'${dir}'-package-7.1-SNAPSHOT.zip';
+	archName=${archNameArtifact}'-package-'${archNameVersion}'.zip';
+	#archName='pentaho-hadoop-shims-'${dir}'-package-7.1-SNAPSHOT.zip';
 
 	unzip ${archName} -d .
 
@@ -469,7 +485,7 @@ _createXML() {
 	cat ${DependencyTagsFile} >> pom.xml
 	echo "</dependencies>"${NewLine}"</project>" >> pom.xml
 
-	buildSection="\n<build>\n<sourceDirectory>..\/<\/sourceDirectory>\n<plugins>\n<plugin>\n<groupId>org.apache.maven.plugins<\/groupId>\n<artifactId>maven-compiler-plugin<\/artifactId>\n<configuration>\n<includes>\n<include>common\/src\/**\/*.java<\/include>\n<include>common\/src-hadoop-shim-1.0\/**\/*.java<\/include>\n<include>common\/src-hbase-1.0\/**\/*.java<\/include>\n<include>common\/src-hbase-shim-1.1\/**\/*.java<\/include>\n<include>common\/src-mapred\/**\/*.java<\/include>\n<include>common\/src-modern\/**\/*.java<\/include>\n<include>common\/src-pig-shim-1.0\/**\/*.java<\/include>\n<include>"${dir}"\/src\/main\/java\/**\/*.java<\/include>\n<\/includes>\n<source>1.8<\/source>\n<target>1.8<\/target>\n<\/configuration>\n<\/plugin>\n<plugin>\n<artifactId>maven-assembly-plugin<\/artifactId>\n<version>2.6<\/version>\n<executions>\n<execution>\n<id>pkg<\/id>\n<phase>package<\/phase>\n<goals>\n<goal>single<\/goal>\n<\/goals>\n<\/execution>\n<\/executions>\n<configuration>\n<descriptor>\${basedir}\/src\/main\/assembly\/descriptors\/plugin.xml<\/descriptor>\n<appendAssemblyId>false<\/appendAssemblyId>\n<\/configuration>\n<\/plugin>\n<\/plugins>\n<\/build>\n<\/project>";
+	buildSection="\n<build>\n<sourceDirectory>..\/<\/sourceDirectory>\n<plugins>\n<plugin>\n<groupId>org.apache.maven.plugins<\/groupId>\n<artifactId>maven-compiler-plugin<\/artifactId>\n<configuration>\n<includes>\n<include>common\/src\/**\/*.java<\/include>\n<include>common\/src-hadoop-shim-1.0\/**\/*.java<\/include>\n<include>common\/src-hbase-1.0\/**\/*.java<\/include>\n<include>common\/src-hbase-shim-1.1\/**\/*.java<\/include>\n<include>common\/src-mapred\/**\/*.java<\/include>\n<include>common\/src-modern\/**\/*.java<\/include>\n<include>common\/src-pig-shim-1.0\/**\/*.java<\/include>\n<include>"${dir}"\/src\/main\/java\/**\/*.java<\/include>\n<\/includes>\n<source>1.8<\/source>\n<target>1.8<\/target>\n<\/configuration>\n<\/plugin>\n<plugin>\n<artifactId>maven-assembly-plugin<\/artifactId>\n<version>2.6<\/version>\n<executions>\n<execution>\n<id>pkg<\/id>\n<phase>package<\/phase>\n<goals>\n<goal>single<\/goal>\n<\/goals>\n<\/execution>\n<\/executions>\n<configuration>\n<descriptor>\${basedir}\/src\/main\/descriptor\/assembly.xml<\/descriptor>\n<appendAssemblyId>false<\/appendAssemblyId>\n<\/configuration>\n<\/plugin>\n<\/plugins>\n<\/build>\n<\/project>";
 
 	#1----inject build section into a pom xml file
 	sed -i 's/<\/project>/'"$buildSection"'/' pom.xml
@@ -477,8 +493,9 @@ _createXML() {
 
 
 	#The rest of the actions
-	cp ${pluginFile} ${rootDir}${dir}/src/main/assembly/descriptors
+	cp ${pluginFile} ${rootDir}${dir}/src/main/descriptor
 	cp pom.xml ${rootDir}${dir}
+
 	rm -f pom.xml
 
 	if [ -f ${DependencyTagsFile} ]; then
@@ -500,7 +517,8 @@ _createXML() {
 	cd ${rootDir}${dir}
 	mvn clean install
 
-	archName="pentaho-hadoop-shims-"${dir}"-7.1-SNAPSHOT.zip"
+	#archName="pentaho-hadoop-shims-"${dir}"-7.1-SNAPSHOT.zip"
+	archName=${archNameArtifact}'-'${archNameVersion}'.zip';
 
 	unzip ./target/${archName} -d ./target
 
@@ -520,8 +538,14 @@ _createXML() {
 
 		cd ${rootDir}${dir}
 		mvn clean install
+
 	fi
 
+
+	#----------------- COPY POM and ASSEMBLY FROM TEMP TO SHIM DIRECTORY ------------
+
+	cp ${rootDir}${dir}/src/main/descriptor/${pluginFile} ${currDir}/${dir}
+	cp ${rootDir}${dir}/pom.xml ${currDir}/${dir}
 
 
 
@@ -545,20 +569,46 @@ test() {
 
 }
 
+#----------- MAIN ------------------------------------------------------
+dir=$1  #shim name
 
-for d in */; do
 
-	dir=${d%*/}
-	#echo ${dir##*/}
+if [ -z "$1" ]
+then
+	echo
+	echo "Missing shim directory"
+	echo "Please type directory name parameter"
+	echo
+	exit
+fi
 
-	oozie=$(echo "$dir" | sed 's/[0-9]//g');
 
-	_containsFolder $oozie res
 
-	if [ "$res" = "true" ]; then
-		_createProject $dir
-		_createXML $dir
-	#test $dir
-	fi
+#rootDir="$tmpDir"/
 
-done
+if [ -d "$rootDir" ]; then
+	rm -rf "$rootDir"
+fi
+
+mkdir "$rootDir"
+
+_createProject $dir
+_createXML $dir
+
+
+# for d in */; do
+
+# dir=${d%*/}
+# #echo ${dir##*/}
+
+# oozie=$(echo "$dir" | sed 's/[0-9]//g');
+
+# _containsFolder $oozie res
+
+# if [ "$res" = "true" ]; then
+# _createProject $dir
+# _createXML $dir
+# #test $dir
+# fi
+
+# done
