@@ -126,7 +126,8 @@ _generateDepSection () {
     for i in "${uniqueArr[@]}"
     do
         IFS='#' read -ra GAV <<< "${antTree[$i]}"
-        dependencyTag="$dependencyTag""<dependency>"${NewLine}"<groupId>""${GAV[0]}""</groupId>"${NewLine}"<artifactId>""${GAV[1]}""</artifactId>"${NewLine}"<version>""${GAV[2]}""</version>"${NewLine}"<exclusions>"${NewLine}"<exclusion>"${NewLine}"<groupId>*</groupId>"${NewLine}"<artifactId>*</artifactId>"${NewLine}"</exclusion>"${NewLine}"</exclusions>"${NewLine}"</dependency>"${NewLine}
+        #dependencyTag="$dependencyTag""<dependency>"${NewLine}"<groupId>""${GAV[0]}""</groupId>"${NewLine}"<artifactId>""${GAV[1]}""</artifactId>"${NewLine}"<version>""${GAV[2]}""</version>"${NewLine}"<exclusions>"${NewLine}"<exclusion>"${NewLine}"<groupId>*</groupId>"${NewLine}"<artifactId>*</artifactId>"${NewLine}"</exclusion>"${NewLine}"</exclusions>"${NewLine}"</dependency>"${NewLine}
+        dependencyTag="$dependencyTag""<dependency>\n<groupId>""${GAV[0]}""<\/groupId>\n<artifactId>""${GAV[1]}""<\/artifactId>\n<version>""${GAV[2]}""<\/version>\n<exclusions>\n<exclusion>\n<groupId>*<\/groupId>\n<artifactId>*<\/artifactId>\n<\/exclusion>\n<\/exclusions>\n<\/dependency>\n"
     done
 
     echo "---- DEPENDENCIES -------"

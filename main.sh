@@ -404,7 +404,7 @@ _createXML() {
 	cp tmp.sh ${dir}
 	#run ant target
 	cd ${dir}
-	ant transfer
+	## ant transfer
 	ant clean-all
 	ant resolve >> ${antTreeFile}
 	sed '/found/!d' ${antTreeFile} >> temptree.txt
@@ -480,15 +480,20 @@ _createXML() {
 
 	#------ Add new dependencies and build section to a pom file -----------------------
 	cd ..
-	sed -i 's/<\/dependencies>//' pom.xml
-	sed -i 's/<\/project>//' pom.xml
-	cat ${DependencyTagsFile} >> pom.xml
-	echo "</dependencies>"${NewLine}"</project>" >> pom.xml
 
-	buildSection="\n<build>\n<sourceDirectory>..\/<\/sourceDirectory>\n<plugins>\n<plugin>\n<groupId>org.apache.maven.plugins<\/groupId>\n<artifactId>maven-compiler-plugin<\/artifactId>\n<configuration>\n<includes>\n<include>common\/src\/**\/*.java<\/include>\n<include>common\/src-hadoop-shim-1.0\/**\/*.java<\/include>\n<include>common\/src-hbase-1.0\/**\/*.java<\/include>\n<include>common\/src-hbase-shim-1.1\/**\/*.java<\/include>\n<include>common\/src-mapred\/**\/*.java<\/include>\n<include>common\/src-modern\/**\/*.java<\/include>\n<include>common\/src-pig-shim-1.0\/**\/*.java<\/include>\n<include>"${dir}"\/src\/main\/java\/**\/*.java<\/include>\n<\/includes>\n<source>1.8<\/source>\n<target>1.8<\/target>\n<\/configuration>\n<\/plugin>\n<plugin>\n<artifactId>maven-assembly-plugin<\/artifactId>\n<version>2.6<\/version>\n<executions>\n<execution>\n<id>pkg<\/id>\n<phase>package<\/phase>\n<goals>\n<goal>single<\/goal>\n<\/goals>\n<\/execution>\n<\/executions>\n<configuration>\n<descriptor>\${basedir}\/src\/main\/descriptor\/assembly.xml<\/descriptor>\n<appendAssemblyId>false<\/appendAssemblyId>\n<\/configuration>\n<\/plugin>\n<\/plugins>\n<\/build>\n<\/project>";
+	valueFromFile=$(<${DependencyTagsFile})
+	valueFromFile="$valueFromFile""<\/dependencies>"
+	sed -i 's/<\/dependencies>/'"$valueFromFile"'/' ${rootDir}${dir}/pom.xml
+
+	## sed -i 's/<\/dependencies>//' pom.xml
+	## sed -i 's/<\/project>//' pom.xml
+	## cat ${DependencyTagsFile} >> pom.xml
+	## echo "</dependencies>"${NewLine}"</project>" >> pom.xml
+
+	## buildSection="\n<build>\n<sourceDirectory>..\/<\/sourceDirectory>\n<plugins>\n<plugin>\n<groupId>org.apache.maven.plugins<\/groupId>\n<artifactId>maven-compiler-plugin<\/artifactId>\n<configuration>\n<includes>\n<include>common\/src\/**\/*.java<\/include>\n<include>common\/src-hadoop-shim-1.0\/**\/*.java<\/include>\n<include>common\/src-hbase-1.0\/**\/*.java<\/include>\n<include>common\/src-hbase-shim-1.1\/**\/*.java<\/include>\n<include>common\/src-mapred\/**\/*.java<\/include>\n<include>common\/src-modern\/**\/*.java<\/include>\n<include>common\/src-pig-shim-1.0\/**\/*.java<\/include>\n<include>"${dir}"\/src\/main\/java\/**\/*.java<\/include>\n<\/includes>\n<source>1.8<\/source>\n<target>1.8<\/target>\n<\/configuration>\n<\/plugin>\n<plugin>\n<artifactId>maven-assembly-plugin<\/artifactId>\n<version>2.6<\/version>\n<executions>\n<execution>\n<id>pkg<\/id>\n<phase>package<\/phase>\n<goals>\n<goal>single<\/goal>\n<\/goals>\n<\/execution>\n<\/executions>\n<configuration>\n<descriptor>\${basedir}\/src\/main\/descriptor\/assembly.xml<\/descriptor>\n<appendAssemblyId>false<\/appendAssemblyId>\n<\/configuration>\n<\/plugin>\n<\/plugins>\n<\/build>\n<\/project>";
 
 	#1----inject build section into a pom xml file
-	sed -i 's/<\/project>/'"$buildSection"'/' pom.xml
+	## sed -i 's/<\/project>/'"$buildSection"'/' pom.xml
 	#------------------------------------------------------------------------------------
 
 
