@@ -263,6 +263,10 @@ local unres="";
 local antNumbs="";
 
 local includeSection="";
+local includeSection0="";
+local includeSection1="";
+local includeSectionAnt="";
+
 local dependencyTag="";
 
 local tmpArr=();
@@ -289,9 +293,21 @@ echo "outputDirectory: ""$outputDirectory"
 AVArr=();
 AVAntArr=();
 
-for p in "${tree[@]}"
+for (( i = 0; i < ${#tree[@]}; i ++ ))
+#for p in "${tree[@]}"
 do  # ---- 4 begin loop
-str=$(echo $p | sed 's/^.*\s//g')
+str=$(echo "${tree[$i]}" | sed 's/^.*\s//g')
+
+echo "GET PARENT DEPENDENCY"
+plusVal="${mvnTreePlus[$i]}"
+echo "$plusVal"
+
+if [ ${plusVal:0:1} = "+" ]; then
+parentArr["${#parentArr[@]}"]="1"
+else
+parentArr["${#parentArr[@]}"]="0"
+fi
+
 									
 IFS=':' read -ra GAV <<< "$str"
 
@@ -304,6 +320,7 @@ fi
 
 
 done  # ---- 4 end loop
+echo "FINISH GET PARENT DEPENDENCY"
 
 echo "_______________________________"
 echo "AVARR = ""${AVArr[4]}"
@@ -352,20 +369,23 @@ IFS=':' read -ra tmpArr <<< "$numb"
 for i in "${tmpArr[@]}"
 do
 IFS=':' read -ra GAV <<< "${tree[$i]}"
-includeSection="$includeSection""<include>""${GAV[0]}"":""${GAV[1]}""</include>"${NewLine}
+if [ "${parentArr[$i]}" = "0" ]; then
+includeSection0="$includeSection0""<include>""${GAV[0]}"":""${GAV[1]}""</include>"${NewLine}
+else
+includeSection1="$includeSection1""<include>""${GAV[0]}"":""${GAV[1]}""</include>"${NewLine}
+fi
 
-
-includeSection1="$includeSection1""${GAV[0]}"":""${GAV[1]}"":""${GAV[3]}"${NewLine}
+includeSection11="$includeSection1""${GAV[0]}"":""${GAV[1]}"":""${GAV[3]}"${NewLine}
 
 
 libJars="$libJars""#""${GAV[0]}"":""${GAV[1]}"
 done
-echo "---- INCLUDES MVN -------"
-echo "$includeSection"
+#echo "---- INCLUDES MVN -------"
+#echo "$includeSection"
 
 
 echo "############# MVN ###############"
-echo "$includeSection1"
+echo "$includeSection11"
 
 
 fi
@@ -382,21 +402,21 @@ IFS=':' read -ra tmpArr <<< "$antNumbs"
 for i in "${tmpArr[@]}"
 do
 IFS='#' read -ra GAV <<< "${antTree[$i]}"
-includeSection="$includeSection""<include>""${GAV[0]}"":""${GAV[1]}""</include>"${NewLine}
+includeSectionAnt="$includeSectionAnt""<include>""${GAV[0]}"":""${GAV[1]}""</include>"${NewLine}
 
 incl2="$incl2""${GAV[0]}"":""${GAV[1]}"":""${GAV[2]}"${NewLine}
-includeSection1="$includeSection1""${GAV[0]}"":""${GAV[1]}"":""${GAV[2]}"${NewLine}
+includeSection11="$includeSection1""${GAV[0]}"":""${GAV[1]}"":""${GAV[2]}"${NewLine}
 
 
 libJars="$libJars""#""${GAV[0]}"":""${GAV[1]}"
 #dependencyTag="$dependencyTag""<dependency>"${NewLine}"<groupId>""${GAV[0]}""</groupId>"${NewLine}"<artifactId>""${GAV[1]}""</artifactId>"${NewLine}"<version>""${GAV[2]}""</version>"${NewLine}"</dependency>"${NewLine}
 done
-echo "---- INCLUDES MVN + ANT -------"
-echo "$includeSection"
+#echo "---- INCLUDES MVN + ANT -------"
+#echo "$includeSection"
 
 
 echo "############# MVN + ANT ###############"
-echo "$includeSection1"
+echo "$includeSection11"
 
 echo "||||||||||||| ONLY ANT |||||||||||||"
 echo "$incl2"
@@ -414,6 +434,7 @@ tmpArr=();
 
 fi # 4` ------ end loop
 
+includeSection="<!-- Parent MVN Dependencies -->"${NewLine}"$includeSection1"${NewLine}"<!-- Transitive MVN Dependencies -->"${NewLine}"$includeSection0"${NewLine}"<!-- Transitive ANT Dependencies -->"${NewLine}"$includeSectionAnt"
 
 if [ "$includeSection" != "" ]; then
 result="<dependencySet>"${NewLine}"<outputDirectory>"${outputDirectory}"</outputDirectory>"${NewLine}"<includes>"${NewLine}${includeSection}"</includes>"${NewLine}"<excludes>"${NewLine}"<exclude>*:tests:*</exclude>"${NewLine}"</excludes>"${NewLine}"</dependencySet>"
@@ -454,6 +475,7 @@ local defaultJars=();
 #do not forget pass file name as $1 parameter to get vmn dependency tree
 IFS=$'\r\n' GLOBIGNORE='*' command eval  'tree=($(cat $2))'
 IFS=$'\r\n' GLOBIGNORE='*' command eval  'antTree=($(cat $6))'
+IFS=$'\r\n' GLOBIGNORE='*' command eval  'mvnTreePlus=($(cat $7))'
 
 cp $2 ${rootDir}/mvnTree
 cp $6 ${rootDir}/antTree
@@ -515,7 +537,7 @@ arr=();
 
 #------------------------ MAIN FUNCTION CALLS ------------------------------
 
-main $1 $2 $3 $4 $5 $6
+main $1 $2 $3 $4 $5 $6 $7
 
 # test () {
 # IFS=$'\r\n' GLOBIGNORE='*' command eval  'tree=($(cat $2))'

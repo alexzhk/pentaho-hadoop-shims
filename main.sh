@@ -8,6 +8,7 @@ NewLine=$'\n';
 metaFolder=/src/META-INF;
 orgFolder=/src/org;
 resourcesFolder=/package-res/*;
+mavenTreeFileWithPlus=treePlus.txt;
 mavenTreeFile=tree.txt;
 antTreeFile=antree.txt;
 DependencyTagsFile=dependency.xml;
@@ -421,6 +422,9 @@ _createXML() {
     #sed -i 's/<\/project>/'"$buildSection"'/' pom.xml
     mvn dependency:tree -DoutputFile=${mavenTreeFile}
     sed 's/^.*\s//g' ${mavenTreeFile} >> temptree1.txt
+	
+	cat ${mavenTreeFile} >> ${mavenTreeFileWithPlus}
+	
     rm -f ${mavenTreeFile}
     cat temptree1.txt >> ${mavenTreeFile}
     rm -f temptree1.txt
@@ -448,9 +452,12 @@ _createXML() {
     cp tmp.sh dist
     cp ${mavenTreeFile} dist
     cp ${antTreeFile} dist
+	cp ${mavenTreeFileWithPlus} dist
+	
     rm -f tmp.sh
     rm -f ${mavenTreeFile}
     rm -f ${antTreeFile}
+	rm -f ${mavenTreeFileWithPlus}
 
     cd dist
 
@@ -471,7 +478,7 @@ _createXML() {
     #return to the shim`s folder
     #cd ..
     #./dependencySet.sh ${dir}
-    ./tmp.sh ${dir} ${mavenTreeFile} ${shimDir} ${DependencyTagsFile} ${pluginFile} ${antTreeFile}
+    ./tmp.sh ${dir} ${mavenTreeFile} ${shimDir} ${DependencyTagsFile} ${pluginFile} ${antTreeFile} ${mavenTreeFileWithPlus}
     rm -f ${mavenTreeFile}
     rm -f tmp.sh
     #------ End Generate assembly descriptor -----------------------
