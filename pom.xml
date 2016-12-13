@@ -8,12 +8,34 @@
     <artifactId>pentaho-ce-jar-parent-pom</artifactId>
     <version>7.1-SNAPSHOT</version>
   </parent>
+  <properties>
+    <xerces.version>2.9.1</xerces.version>
+  </properties>
 
   <groupId>pentaho</groupId>
-  <artifactId>pentaho-hadoop-shims</artifactId>
+  <artifactId>pentaho-hadoop-shims-parent</artifactId>
   <packaging>pom</packaging>
+
+  <dependencies>
+    <!--library needed for kettle-engine, to work with xml-->
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xercesImpl</artifactId>
+      <version>${xerces.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
   <modules>
     <module>api</module>
+    <!--<module>hdp24</module>-->
+    <!--<module>hdp25</module>
+    <module>cdh58</module>
+    <module>cdh59</module>
+    <module>mapr410</module>
+    <module>mapr510</module>
+    <module>emr310</module>
+    <module>emr41</module>
+    <module>emr46</module>-->
   </modules>
 </project>
