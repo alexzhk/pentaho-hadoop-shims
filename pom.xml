@@ -12,7 +12,7 @@
     <xerces.version>2.9.1</xerces.version>
   </properties>
 
-  <groupId>pentaho</groupId>
+  <groupId>org.pentaho</groupId>
   <artifactId>pentaho-hadoop-shims-parent</artifactId>
   <packaging>pom</packaging>
 
@@ -28,14 +28,14 @@
 
   <modules>
     <module>api</module>
-    <!--<module>hdp24</module>-->
-    <!--<module>hdp25</module>
+    <module>hdp24</module>
+    <module>hdp25</module>
     <module>cdh58</module>
     <module>cdh59</module>
     <module>mapr410</module>
     <module>mapr510</module>
     <module>emr310</module>
     <module>emr41</module>
-    <module>emr46</module>-->
+    <module>emr46</module>
   </modules>
 </project>
