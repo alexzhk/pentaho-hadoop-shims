@@ -388,7 +388,7 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>org.pentaho</groupId>
+      <groupId>pentaho</groupId>
       <artifactId>pentaho-hdfs-vfs</artifactId>
       <version>${pentaho2.version}</version>
       <scope>compile</scope>
@@ -400,7 +400,7 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>org.pentaho</groupId>
+      <groupId>pentaho</groupId>
       <artifactId>hadoop2-windows-patch</artifactId>
       <version>${pentaho.version}</version>
       <scope>compile</scope>
@@ -411,7 +411,7 @@
         </exclusion>
       </exclusions>
     </dependency>
-    <dependency>
+    <!--<dependency>
       <groupId>org.apache.hbase</groupId>
       <artifactId>hbase</artifactId>
       <version>${org.apache.hbase.version}</version>
@@ -422,7 +422,7 @@
           <artifactId>*</artifactId>
         </exclusion>
       </exclusions>
-    </dependency>
+    </dependency>-->
     <dependency>
       <groupId>org.apache.hbase</groupId>
       <artifactId>hbase-client</artifactId>
@@ -628,7 +628,7 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.pentaho</groupId>
+      <groupId>pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-api-test</artifactId>
       <version>${pentaho2.version}</version>
       <scope>test</scope>
@@ -646,7 +646,7 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>org.pentaho</groupId>
+      <groupId>pentaho</groupId>
       <artifactId>oss-licenses</artifactId>
       <version>${pentaho2.version}</version>
       <type>zip</type>
@@ -655,7 +655,7 @@
   </dependencies>
   <build>
     <plugins>
-      <plugin>
+      <!--<plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
@@ -664,7 +664,7 @@
           <includes>
             <include>common/src/**/*.java</include>
             <include>common/src-mapred/**/*.java</include>
-            <include>common/src-modern/**/*.java</include>
+            &lt;!&ndash;<include>common/src-modern/**/*.java</include>&ndash;&gt;
             <include>common/src-hadoop-shim-1.0/**/*.java</include>
             <include>common/src-hbase-pre1.0/**/*.java</include>
             <include>common/src-hbase-shim-1.1/**/*.java</include>
@@ -672,9 +672,113 @@
             <include>emr41/src/main/java/**/*.java</include>
           </includes>
         </configuration>
+      </plugin>-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.2</version>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>pentaho</groupId>
+                  <artifactId>pentaho-hadoop-shims-modern</artifactId>
+                  <version>7.1-SNAPSHOT</version>
+                  <classifier>sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/src</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>pentaho</groupId>
+                  <artifactId>pentaho-hadoop-shims-mapred</artifactId>
+                  <version>7.1-SNAPSHOT</version>
+                  <classifier>sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/src</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>pentaho</groupId>
+                  <artifactId>pentaho-hadoop-shims-modern</artifactId>
+                  <version>7.1-SNAPSHOT</version>
+                  <classifier>test-sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/test-src</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${project.build.directory}/src</source>
+                <source>../../common/src</source>
+                <!--<source>../../common/src-mapred</source>-->
+                <!--<source>../../common/src-modern</source>-->
+                <source>../../common/src-hadoop-shim-1.0</source>
+                <source>../../common/src-hbase-pre1.0</source>
+                <source>../../common/src-hbase-shim-1.1</source>
+                <source>../../common/src-pig-shim-1.1</source>
+                <!--<source>emr41/src/main/java</source>-->
+              </sources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>add-resource</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>add-resource</goal>
+            </goals>
+            <configuration>
+              <resources>
+                <resource>
+                  <directory>${project.build.directory}/src/META-INF</directory>
+                  <targetPath>META-INF</targetPath>
+                </resource>
+                <resource>
+                  <directory>${project.build.directory}/src</directory>
+                  <includes>
+                    <include>**/*.properties</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>add-test-source</id>
+            <phase>generate-test-sources</phase>
+            <goals>
+              <goal>add-test-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${project.build.directory}/test-src</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
-    <sourceDirectory>../</sourceDirectory>
+
+
+    <!--<sourceDirectory>../</sourceDirectory>-->
     <resources>
       <resource>
         <directory>src/main/resources</directory>
