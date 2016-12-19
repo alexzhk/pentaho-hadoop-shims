@@ -4,17 +4,44 @@
    http://ant.apache.org/ivy/
    Apache Ivy version: 2.4.0 20141213170938
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.pentaho</groupId>
     <artifactId>pentaho-hadoop-shims-common</artifactId>
     <version>7.1-SNAPSHOT</version>
   </parent>
+  <properties>
+    <org.apache.hive.version>2.1.0</org.apache.hive.version>
+    <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
+    <org.apache.hadoop.version>2.2.0</org.apache.hadoop.version>
+  </properties>
   <artifactId>pentaho-hadoop-shims-common-hadoop-shim-1.0</artifactId>
   <packaging>jar</packaging>
+  <dependencies>
+    <dependency>
+      <groupId>org.pentaho</groupId>
+      <artifactId>pentaho-hadoop-shims-common-shim</artifactId>
+      <version>${org.pentaho.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.pentaho</groupId>
+      <artifactId>pentaho-hadoop-shims-api</artifactId>
+      <version>${org.pentaho.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-common</artifactId>
+      <version>${org.apache.hadoop.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hive</groupId>
+      <artifactId>hive-jdbc</artifactId>
+      <version>${org.apache.hive.version}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
   <build>
     <plugins>
       <plugin>
@@ -48,5 +75,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>

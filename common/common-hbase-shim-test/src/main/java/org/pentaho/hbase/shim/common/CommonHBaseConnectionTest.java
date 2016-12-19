@@ -36,6 +36,7 @@ import org.apache.hadoop.hbase.filter.PrefixFilter;
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -95,7 +96,8 @@ public class CommonHBaseConnectionTest {
 
   @Before
   public void setUp() throws Exception {
-    commonHBaseConnection = new HBaseConnectionImpl();
+    commonHBaseConnection =
+      (CommonHBaseConnection) Class.forName("org.pentaho.hbase.shim.common.HBaseConnectionImpl").newInstance();;
     hbaseAdminMock = mock( HBaseAdmin.class );
     commonHBaseConnection.m_admin = hbaseAdminMock;
     connectionSpy = spy( commonHBaseConnection );
@@ -401,8 +403,8 @@ public class CommonHBaseConnectionTest {
     verify( tableDescriptor, times( 2 ) ).addFamily( columnDescriptorsCaptor.capture() );
     List<HColumnDescriptor> descriptors = columnDescriptorsCaptor.getAllValues();
     assertEquals( descriptors.size(), 2 );
-    assertEquals( descriptors.get( 0 ).getNameAsString(), "columnfamily1" );
-    assertEquals( descriptors.get( 1 ).getNameAsString(), "columnfamily2" );
+    Assert.assertEquals( descriptors.get( 0 ).getNameAsString(), "columnfamily1" );
+    Assert.assertEquals( descriptors.get( 1 ).getNameAsString(), "columnfamily2" );
     verify( hbaseAdminMock ).createTable( tableDescriptor );
   }
 
@@ -492,7 +494,7 @@ public class CommonHBaseConnectionTest {
     commonHBaseConnection.addColumnFilterToScan( cf, meta, space, false );
     FilterList filter = (FilterList) commonHBaseConnection.m_sourceScan.getFilter();
     assertFalse( filter.getFilters().isEmpty() );
-    assertEquals( filter.getFilters().size(), 1 );
+    Assert.assertEquals( filter.getFilters().size(), 1 );
   }
 
   @Test
@@ -526,8 +528,8 @@ public class CommonHBaseConnectionTest {
     connectionSpy.addColumnFilterToScan( cf, meta, space, true );
     FilterList filter = (FilterList) connectionSpy.m_sourceScan.getFilter();
     assertFalse( filter.getFilters().isEmpty() );
-    assertEquals( filter.getFilters().size(), 1 );
-    assertEquals( BinaryPrefixComparator.class,
+    Assert.assertEquals( filter.getFilters().size(), 1 );
+    Assert.assertEquals( BinaryPrefixComparator.class,
       ( (CompareFilter) filter.getFilters().get( 0 ) ).getComparator().getClass() );
   }
 
@@ -547,8 +549,8 @@ public class CommonHBaseConnectionTest {
     connectionSpy.addColumnFilterToScan( cf, meta, space, true );
     FilterList filter = (FilterList) connectionSpy.m_sourceScan.getFilter();
     assertFalse( filter.getFilters().isEmpty() );
-    assertEquals( filter.getFilters().size(), 1 );
-    assertEquals( PrefixFilter.class, filter.getFilters().get( 0 ).getClass() );
+    Assert.assertEquals( filter.getFilters().size(), 1 );
+    Assert.assertEquals( PrefixFilter.class, filter.getFilters().get( 0 ).getClass() );
   }
 
   @Test
@@ -563,8 +565,8 @@ public class CommonHBaseConnectionTest {
 
     verify( scan, times( 2 ) ).setFilter( captor.capture() );
     List<FilterList> allValues = captor.getAllValues();
-    assertEquals( FilterList.Operator.MUST_PASS_ONE, allValues.get( 0 ).getOperator() );
-    assertEquals( FilterList.Operator.MUST_PASS_ALL, allValues.get( 1 ).getOperator() );
+    Assert.assertEquals( FilterList.Operator.MUST_PASS_ONE, allValues.get( 0 ).getOperator() );
+    Assert.assertEquals( FilterList.Operator.MUST_PASS_ALL, allValues.get( 1 ).getOperator() );
   }
 
   @Test public void testCheckResultSet() throws Exception {
@@ -596,7 +598,7 @@ public class CommonHBaseConnectionTest {
     ResultScanner result = mock( ResultScanner.class );
     when( table.getScanner( scan ) ).thenReturn( result );
     commonHBaseConnection.executeSourceTableScan();
-    assertEquals( result, commonHBaseConnection.m_resultSet );
+    Assert.assertEquals( result, commonHBaseConnection.m_resultSet );
   }
 
   @Test
@@ -822,7 +824,7 @@ public class CommonHBaseConnectionTest {
 
     commonHBaseConnection.executeTargetTableDelete( new byte[] { 7, 7, 7 } );
     verify( table ).delete( captor.capture() );
-    assertArrayEquals( new byte[] { 7, 7, 7 }, captor.getValue().getRow() );
+    Assert.assertArrayEquals( new byte[] { 7, 7, 7 }, captor.getValue().getRow() );
   }
 
   @Test
@@ -1054,17 +1056,17 @@ public class CommonHBaseConnectionTest {
 
   @Test
   public void testGetCompareOpByComparisonType() throws Exception {
-    assertEquals( CompareFilter.CompareOp.EQUAL,
+    Assert.assertEquals( CompareFilter.CompareOp.EQUAL,
       commonHBaseConnection.getCompareOpByComparisonType( ColumnFilter.ComparisonType.EQUAL ) );
-    assertEquals( CompareFilter.CompareOp.NOT_EQUAL,
+    Assert.assertEquals( CompareFilter.CompareOp.NOT_EQUAL,
       commonHBaseConnection.getCompareOpByComparisonType( ColumnFilter.ComparisonType.NOT_EQUAL ) );
-    assertEquals( CompareFilter.CompareOp.GREATER,
+    Assert.assertEquals( CompareFilter.CompareOp.GREATER,
       commonHBaseConnection.getCompareOpByComparisonType( ColumnFilter.ComparisonType.GREATER_THAN ) );
-    assertEquals( CompareFilter.CompareOp.GREATER_OR_EQUAL,
+    Assert.assertEquals( CompareFilter.CompareOp.GREATER_OR_EQUAL,
       commonHBaseConnection.getCompareOpByComparisonType( ColumnFilter.ComparisonType.GREATER_THAN_OR_EQUAL ) );
-    assertEquals( CompareFilter.CompareOp.LESS,
+    Assert.assertEquals( CompareFilter.CompareOp.LESS,
       commonHBaseConnection.getCompareOpByComparisonType( ColumnFilter.ComparisonType.LESS_THAN ) );
-    assertEquals( CompareFilter.CompareOp.LESS_OR_EQUAL,
+    Assert.assertEquals( CompareFilter.CompareOp.LESS_OR_EQUAL,
       commonHBaseConnection.getCompareOpByComparisonType( ColumnFilter.ComparisonType.LESS_THAN_OR_EQUAL ) );
     assertNull( commonHBaseConnection.getCompareOpByComparisonType( ColumnFilter.ComparisonType.PREFIX ) );
   }

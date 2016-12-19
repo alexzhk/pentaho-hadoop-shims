@@ -105,7 +105,8 @@ public class Hbase10BaseConnectionTest {
     HBaseValueMeta meta = new HBaseValueMeta( "colFamly,colname,Family", 3, 20, 1 );
 
     connectionSpy.addColumnFilterToScan( cf, meta, space, true );
-    FilterList filter = (FilterList) connectionSpy.m_sourceScan.getFilter();
+    FilterList filter = (FilterList)
+      connectionSpy.m_sourceScan.getFilter();
     assertFalse( filter.getFilters().isEmpty() );
     assertEquals( filter.getFilters().size(), 1 );
   }
