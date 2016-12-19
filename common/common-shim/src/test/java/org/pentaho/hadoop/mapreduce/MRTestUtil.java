@@ -50,13 +50,13 @@ public class MRTestUtil {
   protected static final String TRANSFORMATION_MAP_INPUT_STEPNAME = "transformation-map-input-stepname";
   protected static final String TRANSFORMATION_MAP_XML = "transformation-map-xml";
 
-  protected static final String PATH_TO_NULL_TEST_TRANSFORMATION = "/resources/null-test.ktr";
-  protected static final String PATH_TO_NOT_NULL_TEST_TRANSFORMATION = "/resources/not-null-value-test.ktr";
-  protected static final String PATH_TO_WORDCOUNT_REDUCER_TEST_TRANSFORMATION = "/resources/wordcount-reducer.ktr";
-  protected static final String PATH_TO_WORDCOUNT_MAPPER_TEST_TRANSFORMATION = "/resources/wordcount-mapper.ktr";
-  protected static final String PATH_TO_NO_OUTPUT_STEP_TEST_TRANSFORMATION = "/resources/no-output-step.ktr";
-  protected static final String PATH_TO_NO_INJECTOR_STEP_TEST_TRANSFORMATION = "/resources/no-injector-step.ktr";
-  protected static final String PATH_TO_BAD_INJECTOR_STEP_TEST_TRANSFORMATION = "/resources/bad-injector-fields.ktr";
+  protected static final String PATH_TO_NULL_TEST_TRANSFORMATION = "/null-test.ktr";
+  protected static final String PATH_TO_NOT_NULL_TEST_TRANSFORMATION = "/not-null-value-test.ktr";
+  protected static final String PATH_TO_WORDCOUNT_REDUCER_TEST_TRANSFORMATION = "/wordcount-reducer.ktr";
+  protected static final String PATH_TO_WORDCOUNT_MAPPER_TEST_TRANSFORMATION = "/wordcount-mapper.ktr";
+  protected static final String PATH_TO_NO_OUTPUT_STEP_TEST_TRANSFORMATION = "/no-output-step.ktr";
+  protected static final String PATH_TO_NO_INJECTOR_STEP_TEST_TRANSFORMATION = "/no-injector-step.ktr";
+  protected static final String PATH_TO_BAD_INJECTOR_STEP_TEST_TRANSFORMATION = "/bad-injector-fields.ktr";
   protected static final String PATH_TO_MR_PASSTHROUGH_TEST_TRANSFORMATION = "/resources/mr-passthrough.ktr";
   protected static final Text KEY_TO_NULL = new Text( "0" );
   protected static final Text VALUE_TO_NULL = new Text( "test" );

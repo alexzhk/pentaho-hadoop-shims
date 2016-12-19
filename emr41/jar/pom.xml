@@ -660,7 +660,7 @@
     </dependency>
     <dependency>
       <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-common-hbase</artifactId>
+      <artifactId>pentaho-hadoop-shims-common-hbase-shim</artifactId>
       <version>7.1-SNAPSHOT</version>
       <classifier>sources</classifier>
     </dependency>
@@ -740,7 +740,7 @@
                 </artifactItem>
                 <artifactItem>
                   <groupId>org.pentaho</groupId>
-                  <artifactId>pentaho-hadoop-shims-common-hbase</artifactId>
+                  <artifactId>pentaho-hadoop-shims-common-hbase-shim</artifactId>
                   <version>7.1-SNAPSHOT</version>
                   <classifier>sources</classifier>
                   <overWrite>false</overWrite>
@@ -856,6 +856,25 @@
                   <directory>${project.build.directory}/src</directory>
                   <includes>
                     <include>**/*.properties</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>add-test-resource</id>
+            <phase>generate-test-resources</phase>
+            <goals>
+              <goal>add-test-resource</goal>
+            </goals>
+            <configuration>
+              <resources>
+                <resource>
+                  <directory>${project.build.directory}/test-src</directory>
+                  <includes>
+                    <include>**/*.ktr</include>
+                    <include>**/*.zip</include>
+                    <include>**/*.jar</include>
                   </includes>
                 </resource>
               </resources>

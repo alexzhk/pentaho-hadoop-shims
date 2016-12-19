@@ -12,20 +12,13 @@
     <version>7.1-SNAPSHOT</version>
   </parent>
   <properties>
-    <junit.version>4.12</junit.version>
     <org.apache.hadoop.version>0.20.2</org.apache.hadoop.version>
-    <org.mockito.version>1.9.5</org.mockito.version>
     <org.apache.hbase.version>0.98.10.1-hadoop2</org.apache.hbase.version>
     <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
   </properties>
-  <artifactId>pentaho-hadoop-shims-common-hbase-shim-test</artifactId>
+  <artifactId>pentaho-hadoop-shims-common-hbase-shim</artifactId>
   <packaging>jar</packaging>
   <dependencies>
-    <dependency>
-      <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-common-hbase-shim</artifactId>
-      <version>${org.pentaho.version}</version>
-    </dependency>
     <dependency>
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-shim</artifactId>
@@ -35,6 +28,7 @@
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-core</artifactId>
       <version>${org.apache.hadoop.version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.hbase</groupId>
@@ -47,23 +41,6 @@
       <artifactId>hbase-client</artifactId>
       <version>${org.apache.hbase.version}</version>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-all</artifactId>
-      <version>${org.mockito.version}</version>
-      <optional>true</optional>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
     </dependency>
   </dependencies>
   <build>
@@ -92,6 +69,7 @@
             <phase>verify</phase>
             <goals>
               <goal>jar-no-fork</goal>
+              <goal>test-jar-no-fork</goal>
             </goals>
           </execution>
         </executions>
