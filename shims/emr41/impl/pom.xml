@@ -654,30 +654,6 @@
     </dependency>
     <dependency>
       <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-common-shim</artifactId>
-      <version>7.1-SNAPSHOT</version>
-      <classifier>sources</classifier>
-    </dependency>
-    <dependency>
-      <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-common-hbase-shim</artifactId>
-      <version>7.1-SNAPSHOT</version>
-      <classifier>sources</classifier>
-    </dependency>
-    <dependency>
-      <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-common-modern</artifactId>
-      <version>7.1-SNAPSHOT</version>
-      <classifier>sources</classifier>
-    </dependency>
-    <dependency>
-      <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-common-mapred</artifactId>
-      <version>7.1-SNAPSHOT</version>
-      <classifier>sources</classifier>
-    </dependency>
-    <dependency>
-      <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-pig-shim-1.1</artifactId>
       <version>7.1-SNAPSHOT</version>
       <classifier>sources</classifier>
@@ -697,12 +673,6 @@
     <dependency>
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-hadoop-shim-1.0</artifactId>
-      <version>7.1-SNAPSHOT</version>
-      <classifier>sources</classifier>
-    </dependency>
-    <dependency>
-      <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-common-hbase-shim-test</artifactId>
       <version>7.1-SNAPSHOT</version>
       <classifier>sources</classifier>
     </dependency>
@@ -823,117 +793,6 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.5</version>
-        <executions>
-          <execution>
-            <id>add-source</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>add-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>${project.build.directory}/src</source>
-              </sources>
-            </configuration>
-          </execution>
-          <execution>
-            <id>add-resource</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>add-resource</goal>
-            </goals>
-            <configuration>
-              <resources>
-                <resource>
-                  <directory>${project.build.directory}/src/META-INF</directory>
-                  <targetPath>META-INF</targetPath>
-                </resource>
-                <resource>
-                  <directory>${project.build.directory}/src</directory>
-                  <includes>
-                    <include>**/*.properties</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-          <execution>
-            <id>add-test-resource</id>
-            <phase>generate-test-resources</phase>
-            <goals>
-              <goal>add-test-resource</goal>
-            </goals>
-            <configuration>
-              <resources>
-                <resource>
-                  <directory>${project.build.directory}/test-src</directory>
-                  <includes>
-                    <include>**/*.ktr</include>
-                    <include>**/*.zip</include>
-                    <include>**/*.jar</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-          <execution>
-            <id>add-test-source</id>
-            <phase>generate-test-sources</phase>
-            <goals>
-              <goal>add-test-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <!--<source>${project.build.directory}/src</source>-->
-                <source>${project.build.directory}/test-src</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <classpathDependencyExcludes>pentaho:hadoop2-windows-patch</classpathDependencyExcludes>
-        </configuration>
-      </plugin>
     </plugins>
-    <!--<resources>
-      <resource>
-        <directory>src/main/resources</directory>
-      </resource>
-      <resource>
-        <targetPath>${basedir}/target/classes/META-INF</targetPath>
-        <directory>../common/src-hbase-pre1.0/META-INF</directory>
-      </resource>
-      <resource>
-        <targetPath>${basedir}/target/classes/META-INF</targetPath>
-        <directory>../common/src-hbase-shim-1.1/META-INF</directory>
-      </resource>
-      <resource>
-        <targetPath>${basedir}/target/classes/META-INF</targetPath>
-        <directory>../common/src-mapred/META-INF</directory>
-      </resource>
-      <resource>
-        <targetPath>${basedir}/target/classes/META-INF</targetPath>
-        <directory>../common/src-modern/META-INF</directory>
-      </resource>
-      <resource>
-        <directory>../common/src</directory>
-        <includes>
-          <include>**/*.properties</include>
-        </includes>
-      </resource>
-      <resource>
-        <directory>../common/src-mapred</directory>
-        <includes>
-          <include>**/*.properties</include>
-        </includes>
-      </resource>
-    </resources>-->
   </build>
 </project>
