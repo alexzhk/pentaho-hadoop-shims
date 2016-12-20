@@ -50,7 +50,8 @@ public class ColumnFilterTest extends ColumnFilter {
     + "\n"
     + "            <type>type</type>\n"
     + "\n"
-    + "            <comparison_opp>&#x3d;</comparison_opp>\n"
+    //todo: resolve why here &#x3d; and how ant runs
+    + "            <comparison_opp>=</comparison_opp>\n"
     + "\n"
     + "            <signed_comp>Y</signed_comp>\n"
     + "\n"

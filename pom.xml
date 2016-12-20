@@ -9,7 +9,7 @@
     <version>7.1-SNAPSHOT</version>
   </parent>
   <properties>
-    <xerces.version>2.9.1</xerces.version>
+    <xerces.version>2.8.1</xerces.version>
   </properties>
 
   <artifactId>pentaho-hadoop-shims-parent</artifactId>
@@ -38,4 +38,14 @@
     <module>emr41</module>
     <module>emr46</module>
   </modules>
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
 </project>
