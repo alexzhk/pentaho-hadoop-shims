@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.pentaho</groupId>
+    <artifactId>pentaho-hadoop-shims-parent</artifactId>
+    <version>7.1-SNAPSHOT</version>
+  </parent>
+  <properties>
+    <xerces.version>2.8.1</xerces.version>
+  </properties>
+
+  <artifactId>pentaho-hadoop-shims-list</artifactId>
+  <packaging>pom</packaging>
+
+  <dependencies>
+  </dependencies>
+
+  <modules>
+    <!--<module>hdp24</module>
+    <module>hdp25</module>
+    <module>cdh58</module>
+    <module>cdh59</module>
+    <module>mapr410</module>
+    <module>mapr510</module>
+    <module>emr310</module>
+    <module>emr41</module>
+    <module>emr46</module>-->
+  </modules>
+  <build>
+  </build>
+</project>
