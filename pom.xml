@@ -15,16 +15,6 @@
   <artifactId>pentaho-hadoop-shims-parent</artifactId>
   <packaging>pom</packaging>
 
-  <dependencies>
-    <!--library needed for kettle-engine, to work with xml-->
-    <dependency>
-      <groupId>xerces</groupId>
-      <artifactId>xercesImpl</artifactId>
-      <version>${xerces.version}</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-
   <modules>
     <module>api</module>
     <module>common</module>

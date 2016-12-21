@@ -15,7 +15,6 @@
 <outputDirectory>lib</outputDirectory>
 <useTransitiveDependencies>true</useTransitiveDependencies>
 <useTransitiveFiltering>false</useTransitiveFiltering>
-  <scope>compile</scope>
 <includes>
 <include>dk.brics.automaton:automaton</include>
 <include>pentaho:hadoop2-windows-patch</include>
@@ -48,7 +47,6 @@
 <outputDirectory>lib/pmr</outputDirectory>
 <useTransitiveDependencies>true</useTransitiveDependencies>
 <useTransitiveFiltering>false</useTransitiveFiltering>
-  <scope>compile</scope>
 <includes>
 <include>org.apache.htrace:htrace-core</include>
 <include>org.apache.zookeeper:zookeeper</include>

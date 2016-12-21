@@ -101,7 +101,6 @@
 <include>stax:stax-api</include>
 <include>org.antlr:stringtemplate</include>
 <include>org.apache.velocity:velocity</include>
-<include>org.tukaani:xz</include>
 <!-- Transitive MVN Dependencies -->
 <include>org.apache.hive:hive-common</include>
 <include>org.apache.hive:hive-exec</include>
@@ -123,6 +122,7 @@
 <include>org.codehaus.jackson:jackson-core-asl</include>
 <include>com.fasterxml.jackson.core:jackson-databind</include>
 <include>org.codehaus.jackson:jackson-mapper-asl</include>
+<include>org.tukaani:xz</include>
 </includes>
 <excludes>
 <exclude>*:tests:*</exclude>
@@ -208,7 +208,6 @@
 <include>javax.xml.stream:stax-api</include>
 <include>xerces:xercesImpl</include>
 <include>xmlenc:xmlenc</include>
-<include>org.tukaani:xz</include>
 <!-- Transitive MVN Dependencies -->
 <include>org.apache.hadoop:hadoop-client</include>
 <include>org.apache.hadoop:hadoop-mapreduce-client-common</include>
@@ -231,6 +230,7 @@
 <include>com.fasterxml.jackson.core:jackson-core</include>
 <include>com.fasterxml.jackson.core:jackson-databind</include>
 <include>log4j:log4j</include>
+<include>org.tukaani:xz</include>
 </includes>
 <excludes>
 <exclude>*:tests:*</exclude>

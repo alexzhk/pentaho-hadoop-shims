@@ -20,7 +20,6 @@
 <include>commons-lang:commons-lang</include>
 <include>pentaho:hadoop2-windows-patch</include>
 <include>org.apache.hive:hive-jdbc</include>
-<include>org.apache.httpcomponents:httpclient</include>
 <include>org.apache.oozie:oozie-client</include>
 <include>org.apache.oozie:oozie-core</include>
 <include>pentaho:pentaho-hdfs-vfs</include>
@@ -101,7 +100,6 @@
 <include>stax:stax-api</include>
 <include>org.antlr:stringtemplate</include>
 <include>org.apache.velocity:velocity</include>
-<include>org.tukaani:xz</include>
 <!-- Transitive MVN Dependencies -->
 <include>org.apache.hive:hive-common</include>
 <include>org.apache.hive:hive-exec</include>
@@ -116,12 +114,14 @@
 <include>commons-logging:commons-logging</include>
 <include>commons-pool:commons-pool</include>
 <include>org.apache.curator:curator-client</include>
+<include>org.apache.httpcomponents:httpclient</include>
 <include>org.apache.httpcomponents:httpcore</include>
 <include>com.fasterxml.jackson.core:jackson-annotations</include>
 <include>com.fasterxml.jackson.core:jackson-core</include>
 <include>org.codehaus.jackson:jackson-core-asl</include>
 <include>com.fasterxml.jackson.core:jackson-databind</include>
 <include>org.codehaus.jackson:jackson-mapper-asl</include>
+<include>org.tukaani:xz</include>
 </includes>
 <excludes>
 <exclude>*:tests:*</exclude>
@@ -139,7 +139,6 @@
 <include>org.apache.hadoop:hadoop-yarn-api</include>
 <include>org.apache.hadoop:hadoop-yarn-server-common</include>
 <include>org.apache.hadoop:hadoop-yarn-server-resourcemanager</include>
-<include>org.apache.httpcomponents:httpclient</include>
 </includes>
 <excludes>
 <exclude>*:tests:*</exclude>
@@ -207,7 +206,6 @@
 <include>javax.xml.stream:stax-api</include>
 <include>xerces:xercesImpl</include>
 <include>xmlenc:xmlenc</include>
-<include>org.tukaani:xz</include>
 <!-- Transitive MVN Dependencies -->
 <include>org.apache.hadoop:hadoop-client</include>
 <include>org.apache.hadoop:hadoop-mapreduce-client-common</include>
@@ -225,10 +223,12 @@
 <include>commons-logging:commons-logging</include>
 <include>org.apache.curator:curator-framework</include>
 <include>org.apache.curator:curator-recipes</include>
+<include>org.apache.httpcomponents:httpclient</include>
 <include>org.apache.httpcomponents:httpcore</include>
 <include>com.fasterxml.jackson.core:jackson-core</include>
 <include>com.fasterxml.jackson.core:jackson-databind</include>
 <include>log4j:log4j</include>
+<include>org.tukaani:xz</include>
 </includes>
 <excludes>
 <exclude>*:tests:*</exclude>
