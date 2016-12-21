@@ -26,7 +26,7 @@
     <module>mapr410</module>
     <module>mapr510</module>
     <module>emr310</module>
-    <module>emr41</module>
+    <!--<module>emr41</module>-->
     <module>emr46</module>
   </modules>
   <dependencyManagement>
