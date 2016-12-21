@@ -76,7 +76,7 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.pentaho</groupId>
+      <groupId>pentaho</groupId>
       <artifactId>pentaho-hdfs-vfs</artifactId>
       <version>7.1-SNAPSHOT</version>
       <scope>compile</scope>
@@ -196,7 +196,7 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>org.pentaho</groupId>
+      <groupId>pentaho</groupId>
       <artifactId>hadoop2-windows-patch</artifactId>
       <version>${pentaho2.version}</version>
       <scope>compile</scope>
@@ -437,7 +437,7 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.pentaho</groupId>
+      <groupId>pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-api-test</artifactId>
       <version>${pentaho.version}</version>
       <scope>test</scope>
@@ -455,14 +455,14 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>org.pentaho</groupId>
+      <groupId>pentaho</groupId>
       <artifactId>oss-licenses</artifactId>
       <version>${pentaho.version}</version>
       <type>zip</type>
       <optional>true</optional>
     </dependency>
     <dependency>
-      <groupId>org.pentaho</groupId>
+      <groupId>pentaho</groupId>
       <artifactId>pentaho-hdfs-vfs</artifactId>
       <version>${pentaho.version}</version>
       <exclusions>
@@ -736,61 +736,147 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <dependency>
+      <groupId>org.pentaho</groupId>
+      <artifactId>pentaho-hadoop-shims-common-pig-shim-1.1</artifactId>
+      <version>7.1-SNAPSHOT</version>
+      <classifier>sources</classifier>
+    </dependency>
+    <dependency>
+      <groupId>org.pentaho</groupId>
+      <artifactId>pentaho-hadoop-shims-common-hbase-1.0</artifactId>
+      <version>7.1-SNAPSHOT</version>
+      <classifier>sources</classifier>
+    </dependency>
+    <dependency>
+      <groupId>org.pentaho</groupId>
+      <artifactId>pentaho-hadoop-shims-common-hbase-shim-1.1</artifactId>
+      <version>7.1-SNAPSHOT</version>
+      <classifier>sources</classifier>
+    </dependency>
+    <dependency>
+      <groupId>org.pentaho</groupId>
+      <artifactId>pentaho-hadoop-shims-common-hadoop-shim-1.0</artifactId>
+      <version>7.1-SNAPSHOT</version>
+      <classifier>sources</classifier>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-          <includes>
-            <include>common/src/**/*.java</include>
-            <include>common/src-mapred/**/*.java</include>
-            <include>common/src-modern/**/*.java</include>
-            <include>common/src-hadoop-shim-1.0/**/*.java</include>
-            <include>common/src-hbase-1.0/**/*.java</include>
-            <include>common/src-hbase-shim-1.1/**/*.java</include>
-            <include>common/src-pig-shim-1.1/**/*.java</include>
-            <include>hdp24/src/main/java/**/*.java</include>
-          </includes>
-        </configuration>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.2</version>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.pentaho</groupId>
+                  <artifactId>pentaho-hadoop-shims-common-shim</artifactId>
+                  <version>7.1-SNAPSHOT</version>
+                  <classifier>sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/src</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.pentaho</groupId>
+                  <artifactId>pentaho-hadoop-shims-common-modern</artifactId>
+                  <version>7.1-SNAPSHOT</version>
+                  <classifier>sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/src</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.pentaho</groupId>
+                  <artifactId>pentaho-hadoop-shims-common-hbase-shim</artifactId>
+                  <version>7.1-SNAPSHOT</version>
+                  <classifier>sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/src</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.pentaho</groupId>
+                  <artifactId>pentaho-hadoop-shims-common-mapred</artifactId>
+                  <version>7.1-SNAPSHOT</version>
+                  <classifier>sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/src</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.pentaho</groupId>
+                  <artifactId>pentaho-hadoop-shims-common-hadoop-shim-1.0</artifactId>
+                  <version>7.1-SNAPSHOT</version>
+                  <classifier>sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/src</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.pentaho</groupId>
+                  <artifactId>pentaho-hadoop-shims-common-hbase-1.0</artifactId>
+                  <version>7.1-SNAPSHOT</version>
+                  <classifier>sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/src</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.pentaho</groupId>
+                  <artifactId>pentaho-hadoop-shims-common-hbase-shim-1.1</artifactId>
+                  <version>7.1-SNAPSHOT</version>
+                  <classifier>sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/src</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.pentaho</groupId>
+                  <artifactId>pentaho-hadoop-shims-common-pig-shim-1.1</artifactId>
+                  <version>7.1-SNAPSHOT</version>
+                  <classifier>sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/src</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.pentaho</groupId>
+                  <artifactId>pentaho-hadoop-shims-common-hbase-shim-test</artifactId>
+                  <version>7.1-SNAPSHOT</version>
+                  <classifier>sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/test-src</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.pentaho</groupId>
+                  <artifactId>pentaho-hadoop-shims-common-shim</artifactId>
+                  <version>7.1-SNAPSHOT</version>
+                  <classifier>test-sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/test-src</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.pentaho</groupId>
+                  <artifactId>pentaho-hadoop-shims-common-modern</artifactId>
+                  <version>7.1-SNAPSHOT</version>
+                  <classifier>test-sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/test-src</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.pentaho</groupId>
+                  <artifactId>pentaho-hadoop-shims-common-hbase-shim-1.1</artifactId>
+                  <version>7.1-SNAPSHOT</version>
+                  <classifier>test-sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/test-src</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
-    <sourceDirectory>../</sourceDirectory>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-      </resource>
-      <resource>
-        <targetPath>${basedir}/target/classes/META-INF</targetPath>
-        <directory>../common/src-hbase-1.0/META-INF</directory>
-      </resource>
-      <resource>
-        <targetPath>${basedir}/target/classes/META-INF</targetPath>
-        <directory>../common/src-hbase-shim-1.1/META-INF</directory>
-      </resource>
-      <resource>
-        <targetPath>${basedir}/target/classes/META-INF</targetPath>
-        <directory>../common/src-mapred/META-INF</directory>
-      </resource>
-      <resource>
-        <targetPath>${basedir}/target/classes/META-INF</targetPath>
-        <directory>../common/src-modern/META-INF</directory>
-      </resource>
-      <resource>
-        <directory>../common/src</directory>
-        <includes>
-          <include>**/*.properties</include>
-        </includes>
-      </resource>
-      <resource>
-        <directory>../common/src-mapred</directory>
-        <includes>
-          <include>**/*.properties</include>
-        </includes>
-      </resource>
-    </resources>
   </build>
 </project>

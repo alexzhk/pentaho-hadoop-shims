@@ -59,7 +59,7 @@
         <groupId>org.pentaho</groupId>
         <artifactId>pentaho-hadoop-shims-common-hbase-shim-test</artifactId>
         <version>7.1-SNAPSHOT</version>
-        <classifier>sources</classifier>
+        <scope>test</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
