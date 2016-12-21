@@ -12,11 +12,13 @@
 </fileSets>
 <dependencySets>
 <dependencySet>
-<outputDirectory>/lib</outputDirectory>
-<useTransitiveDependencies>false</useTransitiveDependencies>
+<outputDirectory>lib</outputDirectory>
+<useTransitiveDependencies>true</useTransitiveDependencies>
 <useTransitiveFiltering>false</useTransitiveFiltering>
+  <scope>compile</scope>
 <includes>
 <include>dk.brics.automaton:automaton</include>
+<include>pentaho:hadoop2-windows-patch</include>
 <include>org.apache.hbase:hbase-client</include>
 <include>org.apache.hbase:hbase-common</include>
 <include>org.apache.hbase:hbase-hadoop-compat</include>
@@ -43,23 +45,10 @@
 </excludes>
 </dependencySet>
 <dependencySet>
-<outputDirectory>/lib</outputDirectory>
-<includes>
-<!-- Parent MVN Dependencies -->
-<include>pentaho:hadoop2-windows-patch</include>
-
-<!-- Transitive MVN Dependencies -->
-
-<!-- Transitive ANT Dependencies -->
-</includes>
-<excludes>
-<exclude>*:tests:*</exclude>
-</excludes>
-</dependencySet>
-<dependencySet>
-<outputDirectory>/lib/pmr</outputDirectory>
-<useTransitiveDependencies>false</useTransitiveDependencies>
+<outputDirectory>lib/pmr</outputDirectory>
+<useTransitiveDependencies>true</useTransitiveDependencies>
 <useTransitiveFiltering>false</useTransitiveFiltering>
+  <scope>compile</scope>
 <includes>
 <include>org.apache.htrace:htrace-core</include>
 <include>org.apache.zookeeper:zookeeper</include>
@@ -70,4 +59,3 @@
 </dependencySet>
 </dependencySets>
 </assembly>
-

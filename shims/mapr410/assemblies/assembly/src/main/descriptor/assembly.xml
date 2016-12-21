@@ -13,7 +13,7 @@
 <dependencySets>
 <dependencySet>
 <outputDirectory>/lib</outputDirectory>
-<useTransitiveDependencies>false</useTransitiveDependencies>
+<useTransitiveDependencies>true</useTransitiveDependencies>
 <useTransitiveFiltering>false</useTransitiveFiltering>
 <includes>
 <include>dk.brics.automaton:automaton</include>
@@ -57,7 +57,7 @@
 </dependencySet>
 <dependencySet>
 <outputDirectory>/lib/pmr</outputDirectory>
-<useTransitiveDependencies>false</useTransitiveDependencies>
+<useTransitiveDependencies>true</useTransitiveDependencies>
 <useTransitiveFiltering>false</useTransitiveFiltering>
 <includes>
 <include>org.cloudera.htrace:htrace-core</include>
