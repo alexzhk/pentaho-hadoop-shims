@@ -12,7 +12,7 @@
 </fileSets>
 <dependencySets>
 <dependencySet>
-<outputDirectory>/lib</outputDirectory>
+<outputDirectory>lib</outputDirectory>
 <useTransitiveDependencies>true</useTransitiveDependencies>
 <useTransitiveFiltering>false</useTransitiveFiltering>
 <includes>
@@ -34,7 +34,7 @@
 </excludes>
 </dependencySet>
 <dependencySet>
-<outputDirectory>/lib/client</outputDirectory>
+<outputDirectory>lib/client</outputDirectory>
 <useTransitiveDependencies>true</useTransitiveDependencies>
 <useTransitiveFiltering>false</useTransitiveFiltering>
 <includes>
@@ -102,8 +102,8 @@
 <include>org.codehaus.jackson:jackson-jaxrs</include>
 <include>org.codehaus.jackson:jackson-mapper-asl</include>
 <include>org.codehaus.jackson:jackson-xc</include>
-<include>javax.inject:javax.inject</include>
 <include>com.jamesmurty.utils:java-xmlbuilder</include>
+<include>javax.inject:javax.inject</include>
 <include>javax.xml.bind:jaxb-api</include>
 <include>com.sun.xml.bind:jaxb-impl</include>
 <include>com.sun.jersey:jersey-client</include>
@@ -139,12 +139,8 @@
 </excludes>
 </dependencySet>
 <dependencySet>
-<outputDirectory>/lib/client</outputDirectory>
+<outputDirectory>lib/client</outputDirectory>
 <includes>
-<!-- Parent MVN Dependencies -->
-
-<!-- Transitive MVN Dependencies -->
-
 <!-- Transitive ANT Dependencies -->
 <include>org.apache.zookeeper:zookeeper</include>
 </includes>
@@ -153,7 +149,7 @@
 </excludes>
 </dependencySet>
 <dependencySet>
-<outputDirectory>/lib/pmr</outputDirectory>
+<outputDirectory>lib/pmr</outputDirectory>
 <useTransitiveDependencies>true</useTransitiveDependencies>
 <useTransitiveFiltering>false</useTransitiveFiltering>
 <includes>
@@ -172,4 +168,3 @@
 </dependencySet>
 </dependencySets>
 </assembly>
-

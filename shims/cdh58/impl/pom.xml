@@ -12,10 +12,9 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <properties>
-    <log4j.version>1.2.14</log4j.version>
+    <log4j.version>1.2.17</log4j.version>
     <org.apache.hbase.version>1.2.0-cdh5.8.0</org.apache.hbase.version>
     <junit.version>4.11</junit.version>
-    <log4j2.version>1.2.17</log4j2.version>
     <org.apache.pig.version>0.12.0-cdh5.8.0</org.apache.pig.version>
     <org.apache.zookeeper.version>3.4.5-cdh5.8.0</org.apache.zookeeper.version>
     <org.codehaus.jackson.version>1.9.2</org.codehaus.jackson.version>
@@ -40,24 +39,26 @@
     <org.apache.htrace.version>3.2.0-incubating</org.apache.htrace.version>
     <com.fasterxml.jackson.core2.version>2.3.0</com.fasterxml.jackson.core2.version>
     <org.sonatype.sisu.inject.version>2.2.1-v20090111</org.sonatype.sisu.inject.version>
-    <javax.mail.version>1.4.1</javax.mail.version>
     <org.apache.httpcomponents2.version>4.4.4</org.apache.httpcomponents2.version>
+    <javax.mail.version>1.4.1</javax.mail.version>
     <commons-beanutils.version>1.7.0</commons-beanutils.version>
     <com.thoughtworks.xstream.version>1.4.4</com.thoughtworks.xstream.version>
-    <commons-beanutils2.version>1.8.0</commons-beanutils2.version>
     <commons-logging.version>1.2</commons-logging.version>
+    <commons-beanutils2.version>1.8.0</commons-beanutils2.version>
+    <commons-pool.version>1.5.4</commons-pool.version>
     <org.apache.oozie.version>4.1.0-cdh5.8.0</org.apache.oozie.version>
     <asm.version>3.2</asm.version>
-    <commons-configuration.version>1.6</commons-configuration.version>
+    <commons-io.version>2.4</commons-io.version>
     <commons-lang.version>2.6</commons-lang.version>
     <commons-codec.version>1.9</commons-codec.version>
+    <stax.version>1.0.1</stax.version>
   </properties>
   <artifactId>pentaho-hadoop-shims-cdh58</artifactId>
   <packaging>jar</packaging>
   <version>7.1-SNAPSHOT</version>
   <dependencies>
     <dependency>
-      <groupId>org.pentaho</groupId>
+      <groupId>pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-api</artifactId>
       <version>${pentaho.version}</version>
       <scope>provided</scope>
@@ -90,13 +91,13 @@
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
       <version>${log4j.version}</version>
-      <scope>provided</scope>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>commons-lang</groupId>
       <artifactId>commons-lang</artifactId>
-      <version>2.6</version>
-      <scope>provided</scope>
+      <version>${commons-lang.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -323,7 +324,7 @@
     <dependency>
       <groupId>pentaho</groupId>
       <artifactId>pentaho-hdfs-vfs</artifactId>
-      <version>7.1-SNAPSHOT</version>
+      <version>${pentaho.version}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -514,9 +515,10 @@
       <optional>true</optional>
     </dependency>
     <dependency>
-      <groupId>pentaho</groupId>
-      <artifactId>pentaho-hdfs-vfs</artifactId>
-      <version>${pentaho.version}</version>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>${commons-codec.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -528,83 +530,7 @@
       <groupId>org.apache.curator</groupId>
       <artifactId>curator-client</artifactId>
       <version>${org.apache.curator.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>xerces</groupId>
-      <artifactId>xercesImpl</artifactId>
-      <version>${xerces.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>javax.mail</groupId>
-      <artifactId>mail</artifactId>
-      <version>${javax.mail.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>commons-beanutils</groupId>
-      <artifactId>commons-beanutils-core</artifactId>
-      <version>${commons-beanutils2.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>asm</groupId>
-      <artifactId>asm</artifactId>
-      <version>${asm.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>${log4j2.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>commons-configuration</groupId>
-      <artifactId>commons-configuration</artifactId>
-      <version>${commons-configuration.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>commons-beanutils</groupId>
-      <artifactId>commons-beanutils</artifactId>
-      <version>${commons-beanutils.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -616,17 +542,7 @@
       <groupId>org.sonatype.sisu.inject</groupId>
       <artifactId>cglib</artifactId>
       <version>${org.sonatype.sisu.inject.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>${com.fasterxml.jackson.core.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -638,6 +554,7 @@
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
       <version>${com.fasterxml.jackson.core2.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -646,9 +563,46 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-core</artifactId>
-      <version>${com.fasterxml.jackson.core.version}</version>
+      <groupId>asm</groupId>
+      <artifactId>asm</artifactId>
+      <version>${asm.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils</artifactId>
+      <version>${commons-beanutils.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.curator</groupId>
+      <artifactId>curator-recipes</artifactId>
+      <version>${org.apache.curator.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.curator</groupId>
+      <artifactId>curator-framework</artifactId>
+      <version>${org.apache.curator.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -660,6 +614,7 @@
       <groupId>org.codehaus.jackson</groupId>
       <artifactId>jackson-core-asl</artifactId>
       <version>${org.codehaus.jackson.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -668,53 +623,10 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-mapper-asl</artifactId>
-      <version>${org.codehaus.jackson.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>commons-httpclient</groupId>
-      <artifactId>commons-httpclient</artifactId>
-      <version>${commons-httpclient.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-      <version>${commons-lang.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>jline</groupId>
-      <artifactId>jline</artifactId>
-      <version>${jline.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpcore</artifactId>
-      <version>${org.apache.httpcomponents2.version}</version>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${com.fasterxml.jackson.core.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -726,6 +638,7 @@
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
       <version>${commons-logging.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -734,9 +647,70 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>commons-codec</groupId>
-      <artifactId>commons-codec</artifactId>
-      <version>${commons-codec.version}</version>
+      <groupId>commons-pool</groupId>
+      <artifactId>commons-pool</artifactId>
+      <version>${commons-pool.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>${commons-io.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>commons-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+      <version>${commons-httpclient.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${com.fasterxml.jackson.core.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpcore</artifactId>
+      <version>${org.apache.httpcomponents2.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <version>${org.codehaus.jackson.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -748,6 +722,67 @@
       <groupId>org.jamon</groupId>
       <artifactId>jamon-runtime</artifactId>
       <version>${org.jamon.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>stax</groupId>
+      <artifactId>stax-api</artifactId>
+      <version>${stax.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>jline</groupId>
+      <artifactId>jline</artifactId>
+      <version>${jline.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xercesImpl</artifactId>
+      <version>${xerces.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils-core</artifactId>
+      <version>${commons-beanutils2.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+      <version>${javax.mail.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>

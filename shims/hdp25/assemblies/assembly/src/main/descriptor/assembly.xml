@@ -12,21 +12,29 @@
 </fileSets>
 <dependencySets>
 <dependencySet>
-<outputDirectory>/lib</outputDirectory>
+<outputDirectory>lib</outputDirectory>
+<useTransitiveDependencies>false</useTransitiveDependencies>
+<useTransitiveFiltering>false</useTransitiveFiltering>
 <includes>
-<!-- Parent MVN Dependencies -->
 <include>dk.brics.automaton:automaton</include>
 <include>commons-lang:commons-lang</include>
 <include>pentaho:hadoop2-windows-patch</include>
-<include>org.apache.hive:hive-jdbc</include>
 <include>org.apache.oozie:oozie-client</include>
 <include>org.apache.oozie:oozie-core</include>
 <include>pentaho:pentaho-hdfs-vfs</include>
 <include>org.apache.pig:pig</include>
 <include>org.apache.sqoop:sqoop</include>
 <include>org.apache.zookeeper:zookeeper</include>
-
-<!-- Transitive MVN Dependencies -->
+</includes>
+<excludes>
+<exclude>*:tests:*</exclude>
+</excludes>
+</dependencySet>
+<dependencySet>
+<outputDirectory>lib</outputDirectory>
+<includes>
+<!-- Parent MVN Dependencies -->
+<include>com.zaxxer:HikariCP</include>
 <include>javax.activation:activation</include>
 <include>org.apache.ant:ant</include>
 <include>org.apache.ant:ant-launcher</include>
@@ -51,7 +59,6 @@
 <include>org.apache.geronimo.specs:geronimo-annotation_1.0_spec</include>
 <include>org.apache.geronimo.specs:geronimo-jaspic_1.0_spec</include>
 <include>org.apache.geronimo.specs:geronimo-jta_1.1_spec</include>
-<include>com.zaxxer:HikariCP</include>
 <include>org.apache.hive:hive-common</include>
 <include>org.apache.hive:hive-metastore</include>
 <include>org.apache.hive:hive-serde</include>
@@ -87,7 +94,8 @@
 <include>org.slf4j:slf4j-log4j12</include>
 <include>org.antlr:stringtemplate</include>
 <include>javax.transaction:transaction-api</include>
-
+<!-- Transitive MVN Dependencies -->
+<include>org.apache.hive:hive-jdbc</include>
 <!-- Transitive ANT Dependencies -->
 <include>org.apache.avro:avro</include>
 <include>commons-codec:commons-codec</include>
@@ -108,14 +116,21 @@
 </excludes>
 </dependencySet>
 <dependencySet>
-<outputDirectory>/lib/client</outputDirectory>
+<outputDirectory>lib/client</outputDirectory>
+<useTransitiveDependencies>false</useTransitiveDependencies>
+<useTransitiveFiltering>false</useTransitiveFiltering>
 <includes>
-<!-- Parent MVN Dependencies -->
-<include>org.apache.hadoop:hadoop-client</include>
 <include>com.google.protobuf:protobuf-java</include>
 <include>org.apache.zookeeper:zookeeper</include>
-
-<!-- Transitive MVN Dependencies -->
+</includes>
+<excludes>
+<exclude>*:tests:*</exclude>
+</excludes>
+</dependencySet>
+<dependencySet>
+<outputDirectory>lib/client</outputDirectory>
+<includes>
+<!-- Parent MVN Dependencies -->
 <include>aopalliance:aopalliance</include>
 <include>org.apache.directory.server:apacheds-i18n</include>
 <include>org.apache.directory.server:apacheds-kerberos-codec</include>
@@ -167,7 +182,8 @@
 <include>com.squareup.okio:okio</include>
 <include>javax.xml.stream:stax-api</include>
 <include>xmlenc:xmlenc</include>
-
+<!-- Transitive MVN Dependencies -->
+<include>org.apache.hadoop:hadoop-client</include>
 <!-- Transitive ANT Dependencies -->
 <include>org.sonatype.sisu.inject:cglib</include>
 <include>commons-beanutils:commons-beanutils</include>
@@ -179,9 +195,10 @@
 </excludes>
 </dependencySet>
 <dependencySet>
-<outputDirectory>/lib/pmr</outputDirectory>
+<outputDirectory>lib/pmr</outputDirectory>
+<useTransitiveDependencies>false</useTransitiveDependencies>
+<useTransitiveFiltering>false</useTransitiveFiltering>
 <includes>
-<!-- Parent MVN Dependencies -->
 <include>org.apache.hbase:hbase-client</include>
 <include>org.apache.hbase:hbase-common</include>
 <include>org.apache.hbase:hbase-hadoop-compat</include>
@@ -192,10 +209,6 @@
 <include>com.yammer.metrics:metrics-core</include>
 <include>com.google.protobuf:protobuf-java</include>
 <include>org.apache.zookeeper:zookeeper</include>
-
-<!-- Transitive MVN Dependencies -->
-
-<!-- Transitive ANT Dependencies -->
 </includes>
 <excludes>
 <exclude>*:tests:*</exclude>
@@ -203,4 +216,3 @@
 </dependencySet>
 </dependencySets>
 </assembly>
-

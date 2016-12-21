@@ -12,7 +12,7 @@
 </fileSets>
 <dependencySets>
 <dependencySet>
-<outputDirectory>/lib</outputDirectory>
+<outputDirectory>lib</outputDirectory>
 <useTransitiveDependencies>true</useTransitiveDependencies>
 <useTransitiveFiltering>false</useTransitiveFiltering>
 <includes>
@@ -31,16 +31,9 @@
 </excludes>
 </dependencySet>
 <dependencySet>
-<outputDirectory>/lib</outputDirectory>
+<outputDirectory>lib</outputDirectory>
 <includes>
 <!-- Parent MVN Dependencies -->
-<include>org.apache.hive:hive-common</include>
-<include>org.apache.hive:hive-exec</include>
-<include>org.apache.hive:hive-metastore</include>
-<include>org.apache.hive:hive-serde</include>
-<include>org.apache.hive:hive-service</include>
-
-<!-- Transitive MVN Dependencies -->
 <include>javax.activation:activation</include>
 <include>org.apache.ant:ant</include>
 <include>org.apache.ant:ant-launcher</include>
@@ -109,7 +102,12 @@
 <include>org.antlr:stringtemplate</include>
 <include>org.apache.velocity:velocity</include>
 <include>org.tukaani:xz</include>
-
+<!-- Transitive MVN Dependencies -->
+<include>org.apache.hive:hive-common</include>
+<include>org.apache.hive:hive-exec</include>
+<include>org.apache.hive:hive-metastore</include>
+<include>org.apache.hive:hive-serde</include>
+<include>org.apache.hive:hive-service</include>
 <!-- Transitive ANT Dependencies -->
 <include>asm:asm</include>
 <include>commons-codec:commons-codec</include>
@@ -131,7 +129,7 @@
 </excludes>
 </dependencySet>
 <dependencySet>
-<outputDirectory>/lib/client</outputDirectory>
+<outputDirectory>lib/client</outputDirectory>
 <useTransitiveDependencies>true</useTransitiveDependencies>
 <useTransitiveFiltering>false</useTransitiveFiltering>
 <includes>
@@ -148,18 +146,9 @@
 </excludes>
 </dependencySet>
 <dependencySet>
-<outputDirectory>/lib/client</outputDirectory>
+<outputDirectory>lib/client</outputDirectory>
 <includes>
 <!-- Parent MVN Dependencies -->
-<include>org.apache.hadoop:hadoop-client</include>
-<include>org.apache.hadoop:hadoop-mapreduce-client-common</include>
-<include>org.apache.hadoop:hadoop-mapreduce-client-core</include>
-<include>org.apache.hadoop:hadoop-mapreduce-client-shuffle</include>
-<include>org.apache.hadoop:hadoop-yarn-common</include>
-<include>org.apache.hadoop:hadoop-yarn-server-applicationhistoryservice</include>
-<include>org.apache.hadoop:hadoop-yarn-server-web-proxy</include>
-
-<!-- Transitive MVN Dependencies -->
 <include>javax.activation:activation</include>
 <include>aopalliance:aopalliance</include>
 <include>org.apache.directory.server:apacheds-i18n</include>
@@ -171,8 +160,10 @@
 <include>com.amazonaws:aws-java-sdk-kms</include>
 <include>com.amazonaws:aws-java-sdk-s3</include>
 <include>com.amazonaws:aws-java-sdk-sts</include>
+<include>commons-beanutils:commons-beanutils-core</include>
 <include>commons-cli:commons-cli</include>
 <include>org.apache.commons:commons-compress</include>
+<include>commons-configuration:commons-configuration</include>
 <include>commons-digester:commons-digester</include>
 <include>commons-httpclient:commons-httpclient</include>
 <include>org.apache.commons:commons-math3</include>
@@ -218,14 +209,19 @@
 <include>xerces:xercesImpl</include>
 <include>xmlenc:xmlenc</include>
 <include>org.tukaani:xz</include>
-
+<!-- Transitive MVN Dependencies -->
+<include>org.apache.hadoop:hadoop-client</include>
+<include>org.apache.hadoop:hadoop-mapreduce-client-common</include>
+<include>org.apache.hadoop:hadoop-mapreduce-client-core</include>
+<include>org.apache.hadoop:hadoop-mapreduce-client-shuffle</include>
+<include>org.apache.hadoop:hadoop-yarn-common</include>
+<include>org.apache.hadoop:hadoop-yarn-server-applicationhistoryservice</include>
+<include>org.apache.hadoop:hadoop-yarn-server-web-proxy</include>
 <!-- Transitive ANT Dependencies -->
 <include>asm:asm</include>
 <include>org.sonatype.sisu.inject:cglib</include>
 <include>commons-beanutils:commons-beanutils</include>
-<include>commons-beanutils:commons-beanutils-core</include>
 <include>commons-codec:commons-codec</include>
-<include>commons-configuration:commons-configuration</include>
 <include>commons-io:commons-io</include>
 <include>commons-logging:commons-logging</include>
 <include>org.apache.curator:curator-framework</include>
@@ -241,7 +237,7 @@
 </excludes>
 </dependencySet>
 <dependencySet>
-<outputDirectory>/lib/pmr</outputDirectory>
+<outputDirectory>lib/pmr</outputDirectory>
 <useTransitiveDependencies>true</useTransitiveDependencies>
 <useTransitiveFiltering>false</useTransitiveFiltering>
 <includes>
@@ -262,4 +258,3 @@
 </dependencySet>
 </dependencySets>
 </assembly>
-

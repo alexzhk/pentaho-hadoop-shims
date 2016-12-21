@@ -14,10 +14,13 @@
   <properties>
     <log4j.version>1.2.17</log4j.version>
     <junit.version>4.11</junit.version>
+    <com.google.guava.version>11.0.2</com.google.guava.version>
     <org.apache.thrift.version>0.9.0</org.apache.thrift.version>
     <org.apache.avro.version>1.7.4</org.apache.avro.version>
+    <com.google.code.findbugs.version>1.3.9</com.google.code.findbugs.version>
     <org.apache.oozie.version>4.1.0</org.apache.oozie.version>
     <org.mockito.version>1.9.5</org.mockito.version>
+    <org.codehaus.jackson.version>1.8.8</org.codehaus.jackson.version>
     <pentaho-kettle.version>7.1-SNAPSHOT</pentaho-kettle.version>
     <pentaho.version>7.1-SNAPSHOT</pentaho.version>
     <org.jscience.version>4.3.1</org.jscience.version>
@@ -34,17 +37,20 @@
     <pentaho2.version>08072014</pentaho2.version>
     <javax.xml.bind.version>2.2.2</javax.xml.bind.version>
     <org.sonatype.sisu.inject.version>2.2.1-v20090111</org.sonatype.sisu.inject.version>
+    <commons-logging.version>1.1.3</commons-logging.version>
+    <org.tukaani.version>1.0</org.tukaani.version>
     <com.google.code.gson.version>2.1</com.google.code.gson.version>
     <javax.servlet.jsp.version>2.1</javax.servlet.jsp.version>
     <com.thoughtworks.xstream.version>1.4.4</com.thoughtworks.xstream.version>
     <org.apache.commons.version>1.2</org.apache.commons.version>
     <org.apache.sqoop.version>1.4.5</org.apache.sqoop.version>
-    <org.xerial.snappy.version>1.0.4.1</org.xerial.snappy.version>
     <commons-httpclient.version>3.1</commons-httpclient.version>
+    <org.xerial.snappy.version>1.0.4.1</org.xerial.snappy.version>
     <joda-time.version>2.3</joda-time.version>
-    <asm.version>3.2</asm.version>
     <commons-codec.version>1.4</commons-codec.version>
+    <asm.version>3.2</asm.version>
     <commons-configuration.version>1.5</commons-configuration.version>
+    <commons-io.version>2.4</commons-io.version>
     <org.apache.hbase.version>0.94.18</org.apache.hbase.version>
     <org.apache.httpcomponents.version>4.4</org.apache.httpcomponents.version>
     <commons-lang.version>2.6</commons-lang.version>
@@ -55,7 +61,7 @@
   <version>7.1-SNAPSHOT</version>
   <dependencies>
     <dependency>
-      <groupId>org.pentaho</groupId>
+      <groupId>pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-api</artifactId>
       <version>${pentaho.version}</version>
       <scope>provided</scope>
@@ -201,7 +207,7 @@
     <dependency>
       <groupId>dk.brics.automaton</groupId>
       <artifactId>automaton</artifactId>
-      <version>1.11-8</version>
+      <version>${dk.brics.automaton.version}</version>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
@@ -395,7 +401,7 @@
     <dependency>
       <groupId>pentaho</groupId>
       <artifactId>pentaho-hdfs-vfs</artifactId>
-      <version>7.1-SNAPSHOT</version>
+      <version>${pentaho.version}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -467,8 +473,8 @@
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
-      <version>1.2.17</version>
-      <scope>provided</scope>
+      <version>${log4j.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -574,64 +580,10 @@
       <optional>true</optional>
     </dependency>
     <dependency>
-      <groupId>pentaho</groupId>
-      <artifactId>pentaho-hdfs-vfs</artifactId>
-      <version>${pentaho.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>asm</groupId>
-      <artifactId>asm</artifactId>
-      <version>${asm.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>${log4j.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>javax.xml.bind</groupId>
-      <artifactId>jaxb-api</artifactId>
-      <version>${javax.xml.bind.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
       <version>${commons-codec.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>com.sun.jersey</groupId>
-      <artifactId>jersey-core</artifactId>
-      <version>${com.sun.jersey.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -643,6 +595,7 @@
       <groupId>org.sonatype.sisu.inject</groupId>
       <artifactId>cglib</artifactId>
       <version>${org.sonatype.sisu.inject.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -651,9 +604,10 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>com.sun.jersey</groupId>
-      <artifactId>jersey-server</artifactId>
-      <version>${com.sun.jersey.version}</version>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>${commons-io.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -662,9 +616,10 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>com.sun.jersey</groupId>
-      <artifactId>jersey-json</artifactId>
-      <version>${com.sun.jersey.version}</version>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${com.google.guava.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -673,9 +628,10 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>org.apache.avro</groupId>
-      <artifactId>avro</artifactId>
-      <version>${org.apache.avro.version}</version>
+      <groupId>org.tukaani</groupId>
+      <artifactId>xz</artifactId>
+      <version>${org.tukaani.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -684,9 +640,70 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>org.xerial.snappy</groupId>
-      <artifactId>snappy-java</artifactId>
-      <version>${org.xerial.snappy.version}</version>
+      <groupId>asm</groupId>
+      <artifactId>asm</artifactId>
+      <version>${asm.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+      <version>${com.google.code.findbugs.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-jaxrs</artifactId>
+      <version>${org.codehaus.jackson.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>${commons-logging.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-xc</artifactId>
+      <version>${org.codehaus.jackson.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>${javax.xml.bind.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -698,6 +715,55 @@
       <groupId>commons-httpclient</groupId>
       <artifactId>commons-httpclient</artifactId>
       <version>${commons-httpclient.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-json</artifactId>
+      <version>${com.sun.jersey.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.avro</groupId>
+      <artifactId>avro</artifactId>
+      <version>${org.apache.avro.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.xerial.snappy</groupId>
+      <artifactId>snappy-java</artifactId>
+      <version>${org.xerial.snappy.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-server</artifactId>
+      <version>${com.sun.jersey.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -709,17 +775,7 @@
       <groupId>org.mortbay.jetty</groupId>
       <artifactId>jetty</artifactId>
       <version>${org.mortbay.jetty.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet.jsp</groupId>
-      <artifactId>jsp-api</artifactId>
-      <version>${javax.servlet.jsp.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -731,6 +787,31 @@
       <groupId>tomcat</groupId>
       <artifactId>jasper-runtime</artifactId>
       <version>${tomcat.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>jsp-api</artifactId>
+      <version>${javax.servlet.jsp.version}</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-core</artifactId>
+      <version>${com.sun.jersey.version}</version>
+      <scope>compile</scope>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>

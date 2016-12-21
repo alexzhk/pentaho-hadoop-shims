@@ -12,7 +12,7 @@
 </fileSets>
 <dependencySets>
 <dependencySet>
-<outputDirectory>/lib</outputDirectory>
+<outputDirectory>lib</outputDirectory>
 <useTransitiveDependencies>true</useTransitiveDependencies>
 <useTransitiveFiltering>false</useTransitiveFiltering>
 <includes>
@@ -34,7 +34,7 @@
 </excludes>
 </dependencySet>
 <dependencySet>
-<outputDirectory>/lib/client</outputDirectory>
+<outputDirectory>lib/client</outputDirectory>
 <useTransitiveDependencies>true</useTransitiveDependencies>
 <useTransitiveFiltering>false</useTransitiveFiltering>
 <includes>
@@ -64,16 +64,9 @@
 </excludes>
 </dependencySet>
 <dependencySet>
-<outputDirectory>/lib/client</outputDirectory>
+<outputDirectory>lib/client</outputDirectory>
 <includes>
 <!-- Parent MVN Dependencies -->
-<include>org.apache.hadoop:hadoop-mapreduce-client-app</include>
-<include>org.apache.hadoop:hadoop-mapreduce-client-common</include>
-<include>org.apache.hadoop:hadoop-mapreduce-client-core</include>
-<include>org.apache.hadoop:hadoop-mapreduce-client-hs</include>
-<include>org.apache.hadoop:hadoop-mapreduce-client-shuffle</include>
-
-<!-- Transitive MVN Dependencies -->
 <include>javax.activation:activation</include>
 <include>aopalliance:aopalliance</include>
 <include>org.apache.avro:avro</include>
@@ -115,8 +108,12 @@
 <include>org.slf4j:slf4j-log4j12</include>
 <include>org.xerial.snappy:snappy-java</include>
 <include>xmlenc:xmlenc</include>
-<include>org.tukaani:xz</include>
-
+<!-- Transitive MVN Dependencies -->
+<include>org.apache.hadoop:hadoop-mapreduce-client-app</include>
+<include>org.apache.hadoop:hadoop-mapreduce-client-common</include>
+<include>org.apache.hadoop:hadoop-mapreduce-client-core</include>
+<include>org.apache.hadoop:hadoop-mapreduce-client-hs</include>
+<include>org.apache.hadoop:hadoop-mapreduce-client-shuffle</include>
 <!-- Transitive ANT Dependencies -->
 <include>asm:asm</include>
 <include>org.sonatype.sisu.inject:cglib</include>
@@ -127,13 +124,14 @@
 <include>org.codehaus.jackson:jackson-jaxrs</include>
 <include>org.codehaus.jackson:jackson-xc</include>
 <include>com.google.code.findbugs:jsr305</include>
+<include>org.tukaani:xz</include>
 </includes>
 <excludes>
 <exclude>*:tests:*</exclude>
 </excludes>
 </dependencySet>
 <dependencySet>
-<outputDirectory>/lib/pmr</outputDirectory>
+<outputDirectory>lib/pmr</outputDirectory>
 <useTransitiveDependencies>true</useTransitiveDependencies>
 <useTransitiveFiltering>false</useTransitiveFiltering>
 <includes>
@@ -146,4 +144,3 @@
 </dependencySet>
 </dependencySets>
 </assembly>
-
