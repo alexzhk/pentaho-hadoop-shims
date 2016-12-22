@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.pentaho</groupId>
@@ -7,11 +8,14 @@
     <version>7.1-SNAPSHOT</version>
   </parent>
   <artifactId>pentaho-hadoop-shims-cdh58-assembly</artifactId>
+  <properties>
+    <pentaho.version>7.1-SNAPSHOT</pentaho.version>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-cdh58</artifactId>
-      <version>7.1-SNAPSHOT</version>
+      <version>${pentaho.version}</version>
     </dependency>
   </dependencies>
   <build>
@@ -31,6 +35,33 @@
           <descriptor>${basedir}/src/main/descriptor/assembly.xml</descriptor>
           <appendAssemblyId>false</appendAssemblyId>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.2</version>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>pentaho</groupId>
+                  <artifactId>oss-licenses</artifactId>
+                  <version>${pentaho.version}</version>
+                  <type>zip</type>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${oss.license.directory}</outputDirectory>
+                  <includes>*${shim.name}*</includes>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
