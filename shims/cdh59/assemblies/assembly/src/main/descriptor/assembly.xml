@@ -9,6 +9,10 @@
       <directory>${basedir}/src/main/resources</directory>
       <outputDirectory>/</outputDirectory>
     </fileSet>
+    <fileSet>
+      <directory>${oss.license.directory}</directory>
+      <outputDirectory>/</outputDirectory>
+    </fileSet>
   </fileSets>
   <dependencySets>
     <dependencySet>

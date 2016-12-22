@@ -10,6 +10,7 @@
   </parent>
   <properties>
     <xerces.version>2.8.1</xerces.version>
+    <oss.license.directory>${project.build.directory}/oss_license</oss.license.directory>
   </properties>
 
   <artifactId>pentaho-hadoop-shims-list</artifactId>

@@ -8,6 +8,9 @@
   </parent>
   <artifactId>pentaho-hadoop-shims-cdh58-reactor</artifactId>
   <packaging>pom</packaging>
+  <properties>
+    <shim.name>cdh58</shim.name>
+  </properties>
   <modules>
     <module>impl</module>
     <module>assemblies</module>
