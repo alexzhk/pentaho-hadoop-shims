@@ -9,6 +9,6 @@
   <artifactId>pentaho-hadoop-shims-hdp24-assemblies-reactor</artifactId>
   <packaging>pom</packaging>
   <modules>
-    <module>assembly</module>
+    <module>hdp24-shim</module>
   </modules>
 </project>

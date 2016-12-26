@@ -9,6 +9,6 @@
   <artifactId>pentaho-hadoop-shims-mapr510-assemblies-reactor</artifactId>
   <packaging>pom</packaging>
   <modules>
-    <module>assembly</module>
+    <module>mapr510-shim</module>
   </modules>
 </project>

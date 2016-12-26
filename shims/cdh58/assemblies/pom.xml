@@ -9,6 +9,6 @@
   <artifactId>pentaho-hadoop-shims-cdh58-assemblies-reactor</artifactId>
   <packaging>pom</packaging>
   <modules>
-    <module>assembly</module>
+    <module>cdh58-shim</module>
   </modules>
 </project>
