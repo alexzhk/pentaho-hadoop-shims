@@ -10,6 +10,8 @@
   </parent>
   <properties>
     <xerces.version>2.8.1</xerces.version>
+    <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
+    <pentaho.version>7.1-SNAPSHOT</pentaho.version>
     <oss.license.directory>${project.build.directory}/oss_license</oss.license.directory>
   </properties>
 
@@ -32,31 +34,31 @@
       <dependency>
         <groupId>org.pentaho</groupId>
         <artifactId>pentaho-hadoop-shims-common-shim</artifactId>
-        <version>7.1-SNAPSHOT</version>
+        <version>${org.pentaho.version}</version>
         <classifier>sources</classifier>
       </dependency>
       <dependency>
         <groupId>org.pentaho</groupId>
         <artifactId>pentaho-hadoop-shims-common-hbase-shim</artifactId>
-        <version>7.1-SNAPSHOT</version>
+        <version>${org.pentaho.version}</version>
         <classifier>sources</classifier>
       </dependency>
       <dependency>
         <groupId>org.pentaho</groupId>
         <artifactId>pentaho-hadoop-shims-common-modern</artifactId>
-        <version>7.1-SNAPSHOT</version>
+        <version>${org.pentaho.version}</version>
         <classifier>sources</classifier>
       </dependency>
       <dependency>
         <groupId>org.pentaho</groupId>
         <artifactId>pentaho-hadoop-shims-common-mapred</artifactId>
-        <version>7.1-SNAPSHOT</version>
+        <version>${org.pentaho.version}</version>
         <classifier>sources</classifier>
       </dependency>
       <dependency>
         <groupId>org.pentaho</groupId>
         <artifactId>pentaho-hadoop-shims-common-hbase-shim-test</artifactId>
-        <version>7.1-SNAPSHOT</version>
+        <version>${org.pentaho.version}</version>
         <scope>test</scope>
       </dependency>
     </dependencies>

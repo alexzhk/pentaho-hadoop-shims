@@ -9,6 +9,6 @@
   <artifactId>pentaho-hadoop-shims-emr46-assemblies-reactor</artifactId>
   <packaging>pom</packaging>
   <modules>
-    <module>assembly</module>
+    <module>emr46-shim</module>
   </modules>
 </project>

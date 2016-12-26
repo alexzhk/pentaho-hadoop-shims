@@ -11,6 +11,9 @@
     <version>7.1-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
+  <artifactId>pentaho-hadoop-shims-cdh58</artifactId>
+  <packaging>jar</packaging>
+  <version>7.1-SNAPSHOT</version>
   <properties>
     <log4j.version>1.2.17</log4j.version>
     <org.apache.hbase.version>1.2.0-cdh5.8.0</org.apache.hbase.version>
@@ -22,7 +25,6 @@
     <org.mockito.version>1.9.5</org.mockito.version>
     <org.apache.httpcomponents.version>4.2.5</org.apache.httpcomponents.version>
     <pentaho-kettle.version>7.1-SNAPSHOT</pentaho-kettle.version>
-    <pentaho.version>7.1-SNAPSHOT</pentaho.version>
     <org.apache.hive.version>1.1.0-cdh5.8.0</org.apache.hive.version>
     <dk.brics.automaton.version>1.11-8</dk.brics.automaton.version>
     <xerces.version>2.9.1</xerces.version>
@@ -32,7 +34,7 @@
     <org.safehaus.jug.version>2.0.0</org.safehaus.jug.version>
     <org.apache.sqoop.version>1.4.6-cdh5.8.0</org.apache.sqoop.version>
     <org.apache.curator.version>2.6.0</org.apache.curator.version>
-    <pentaho2.version>08072014</pentaho2.version>
+    <pentaho-hadoop2-windows-patch.version>08072014</pentaho-hadoop2-windows-patch.version>
     <com.fasterxml.jackson.core.version>2.3.1</com.fasterxml.jackson.core.version>
     <org.jamon.version>2.3.1</org.jamon.version>
     <com.yammer.metrics.version>2.2.0</com.yammer.metrics.version>
@@ -53,14 +55,11 @@
     <commons-lang.version>2.6</commons-lang.version>
     <stax.version>1.0.1</stax.version>
   </properties>
-  <artifactId>pentaho-hadoop-shims-cdh58</artifactId>
-  <packaging>jar</packaging>
-  <version>7.1-SNAPSHOT</version>
   <dependencies>
     <dependency>
-      <groupId>pentaho</groupId>
+      <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-api</artifactId>
-      <version>${pentaho.version}</version>
+      <version>${org.pentaho.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -192,7 +191,7 @@
     <dependency>
       <groupId>pentaho</groupId>
       <artifactId>hadoop2-windows-patch</artifactId>
-      <version>${pentaho2.version}</version>
+      <version>${pentaho-hadoop2-windows-patch.version}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -460,9 +459,10 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-api-test</artifactId>
-      <version>${pentaho.version}</version>
+      <groupId>org.pentaho</groupId>
+      <artifactId>pentaho-hadoop-shims-api</artifactId>
+      <type>test-jar</type>
+      <version>${org.pentaho.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -793,25 +793,25 @@
     <dependency>
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-pig-shim-1.0</artifactId>
-      <version>7.1-SNAPSHOT</version>
+      <version>${org.pentaho.version}</version>
       <classifier>sources</classifier>
     </dependency>
     <dependency>
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-hbase-1.0</artifactId>
-      <version>7.1-SNAPSHOT</version>
+      <version>${org.pentaho.version}</version>
       <classifier>sources</classifier>
     </dependency>
     <dependency>
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-hbase-shim-1.1</artifactId>
-      <version>7.1-SNAPSHOT</version>
+      <version>${org.pentaho.version}</version>
       <classifier>sources</classifier>
     </dependency>
     <dependency>
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-hadoop-shim-1.0</artifactId>
-      <version>7.1-SNAPSHOT</version>
+      <version>${org.pentaho.version}</version>
       <classifier>sources</classifier>
     </dependency>
   </dependencies>
@@ -833,7 +833,7 @@
                 <artifactItem>
                   <groupId>org.pentaho</groupId>
                   <artifactId>pentaho-hadoop-shims-common-shim</artifactId>
-                  <version>7.1-SNAPSHOT</version>
+                  <version>${org.pentaho.version}</version>
                   <classifier>sources</classifier>
                   <overWrite>false</overWrite>
                   <outputDirectory>${project.build.directory}/src</outputDirectory>
@@ -841,7 +841,7 @@
                 <artifactItem>
                   <groupId>org.pentaho</groupId>
                   <artifactId>pentaho-hadoop-shims-common-modern</artifactId>
-                  <version>7.1-SNAPSHOT</version>
+                  <version>${org.pentaho.version}</version>
                   <classifier>sources</classifier>
                   <overWrite>false</overWrite>
                   <outputDirectory>${project.build.directory}/src</outputDirectory>
@@ -849,7 +849,7 @@
                 <artifactItem>
                   <groupId>org.pentaho</groupId>
                   <artifactId>pentaho-hadoop-shims-common-hbase-shim</artifactId>
-                  <version>7.1-SNAPSHOT</version>
+                  <version>${org.pentaho.version}</version>
                   <classifier>sources</classifier>
                   <overWrite>false</overWrite>
                   <outputDirectory>${project.build.directory}/src</outputDirectory>
@@ -857,7 +857,7 @@
                 <artifactItem>
                   <groupId>org.pentaho</groupId>
                   <artifactId>pentaho-hadoop-shims-common-mapred</artifactId>
-                  <version>7.1-SNAPSHOT</version>
+                  <version>${org.pentaho.version}</version>
                   <classifier>sources</classifier>
                   <overWrite>false</overWrite>
                   <outputDirectory>${project.build.directory}/src</outputDirectory>
@@ -865,7 +865,7 @@
                 <artifactItem>
                   <groupId>org.pentaho</groupId>
                   <artifactId>pentaho-hadoop-shims-common-hadoop-shim-1.0</artifactId>
-                  <version>7.1-SNAPSHOT</version>
+                  <version>${org.pentaho.version}</version>
                   <classifier>sources</classifier>
                   <overWrite>false</overWrite>
                   <outputDirectory>${project.build.directory}/src</outputDirectory>
@@ -873,7 +873,7 @@
                 <artifactItem>
                   <groupId>org.pentaho</groupId>
                   <artifactId>pentaho-hadoop-shims-common-hbase-1.0</artifactId>
-                  <version>7.1-SNAPSHOT</version>
+                  <version>${org.pentaho.version}</version>
                   <classifier>sources</classifier>
                   <overWrite>false</overWrite>
                   <outputDirectory>${project.build.directory}/src</outputDirectory>
@@ -881,7 +881,7 @@
                 <artifactItem>
                   <groupId>org.pentaho</groupId>
                   <artifactId>pentaho-hadoop-shims-common-hbase-shim-1.1</artifactId>
-                  <version>7.1-SNAPSHOT</version>
+                  <version>${org.pentaho.version}</version>
                   <classifier>sources</classifier>
                   <overWrite>false</overWrite>
                   <outputDirectory>${project.build.directory}/src</outputDirectory>
@@ -889,7 +889,7 @@
                 <artifactItem>
                   <groupId>org.pentaho</groupId>
                   <artifactId>pentaho-hadoop-shims-common-pig-shim-1.0</artifactId>
-                  <version>7.1-SNAPSHOT</version>
+                  <version>${org.pentaho.version}</version>
                   <classifier>sources</classifier>
                   <overWrite>false</overWrite>
                   <outputDirectory>${project.build.directory}/src</outputDirectory>
@@ -897,7 +897,7 @@
                 <artifactItem>
                   <groupId>org.pentaho</groupId>
                   <artifactId>pentaho-hadoop-shims-common-hbase-shim-test</artifactId>
-                  <version>7.1-SNAPSHOT</version>
+                  <version>${org.pentaho.version}</version>
                   <classifier>sources</classifier>
                   <overWrite>false</overWrite>
                   <outputDirectory>${project.build.directory}/test-src</outputDirectory>
@@ -905,7 +905,7 @@
                 <artifactItem>
                   <groupId>org.pentaho</groupId>
                   <artifactId>pentaho-hadoop-shims-common-shim</artifactId>
-                  <version>7.1-SNAPSHOT</version>
+                  <version>${org.pentaho.version}</version>
                   <classifier>test-sources</classifier>
                   <overWrite>false</overWrite>
                   <outputDirectory>${project.build.directory}/test-src</outputDirectory>
@@ -913,7 +913,7 @@
                 <artifactItem>
                   <groupId>org.pentaho</groupId>
                   <artifactId>pentaho-hadoop-shims-common-modern</artifactId>
-                  <version>7.1-SNAPSHOT</version>
+                  <version>${org.pentaho.version}</version>
                   <classifier>test-sources</classifier>
                   <overWrite>false</overWrite>
                   <outputDirectory>${project.build.directory}/test-src</outputDirectory>
@@ -921,7 +921,7 @@
                 <artifactItem>
                   <groupId>org.pentaho</groupId>
                   <artifactId>pentaho-hadoop-shims-common-hbase-shim-1.1</artifactId>
-                  <version>7.1-SNAPSHOT</version>
+                  <version>${org.pentaho.version}</version>
                   <classifier>test-sources</classifier>
                   <overWrite>false</overWrite>
                   <outputDirectory>${project.build.directory}/test-src</outputDirectory>

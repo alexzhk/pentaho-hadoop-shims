@@ -6,15 +6,12 @@
     <artifactId>pentaho-hadoop-shims-hdp25-assemblies-reactor</artifactId>
     <version>7.1-SNAPSHOT</version>
   </parent>
-  <artifactId>pentaho-hadoop-shims-hdp25-assembly</artifactId>
-  <properties>
-    <pentaho.version>7.1-SNAPSHOT</pentaho.version>
-  </properties>
+  <artifactId>pentaho-hadoop-shims-hdp25-package</artifactId>
   <dependencies>
     <dependency>
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-hdp25</artifactId>
-      <version>7.1-SNAPSHOT</version>
+      <version>${org.pentaho.version}</version>
     </dependency>
   </dependencies>
   <build>
