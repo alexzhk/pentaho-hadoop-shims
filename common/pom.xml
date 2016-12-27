@@ -55,7 +55,6 @@
     <module>mapred</module>
     <module>modern</module>
     <module>hadoop-shim-1.0</module>
-    <module>hbase-pre1.0</module>
     <module>hbase-1.0</module>
     <module>hbase-shim-1.0</module>
     <module>hbase-shim-1.1</module>
