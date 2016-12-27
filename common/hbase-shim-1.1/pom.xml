@@ -25,12 +25,6 @@
     </dependency>
     <dependency>
       <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-common-hbase-shim-test</artifactId>
-      <version>${org.pentaho.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-mapred</artifactId>
       <version>${org.pentaho.version}</version>
     </dependency>

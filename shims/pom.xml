@@ -55,12 +55,6 @@
         <version>${org.pentaho.version}</version>
         <classifier>sources</classifier>
       </dependency>
-      <dependency>
-        <groupId>org.pentaho</groupId>
-        <artifactId>pentaho-hadoop-shims-common-hbase-shim-test</artifactId>
-        <version>${org.pentaho.version}</version>
-        <scope>test</scope>
-      </dependency>
     </dependencies>
   </dependencyManagement>
   <build>

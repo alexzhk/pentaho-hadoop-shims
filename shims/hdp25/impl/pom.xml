@@ -823,7 +823,7 @@
     </dependency>
     <dependency>
       <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-common-hbase-1.0</artifactId>
+      <artifactId>pentaho-hadoop-shims-common-hbase</artifactId>
       <version>${org.pentaho.version}</version>
       <classifier>sources</classifier>
     </dependency>
@@ -897,7 +897,7 @@
                 </artifactItem>
                 <artifactItem>
                   <groupId>org.pentaho</groupId>
-                  <artifactId>pentaho-hadoop-shims-common-hbase-1.0</artifactId>
+                  <artifactId>pentaho-hadoop-shims-common-hbase</artifactId>
                   <version>${org.pentaho.version}</version>
                   <classifier>sources</classifier>
                   <overWrite>false</overWrite>
@@ -918,14 +918,6 @@
                   <classifier>sources</classifier>
                   <overWrite>false</overWrite>
                   <outputDirectory>${project.build.directory}/src</outputDirectory>
-                </artifactItem>
-                <artifactItem>
-                  <groupId>org.pentaho</groupId>
-                  <artifactId>pentaho-hadoop-shims-common-hbase-shim-test</artifactId>
-                  <version>${org.pentaho.version}</version>
-                  <classifier>sources</classifier>
-                  <overWrite>false</overWrite>
-                  <outputDirectory>${project.build.directory}/test-src</outputDirectory>
                 </artifactItem>
                 <artifactItem>
                   <groupId>org.pentaho</groupId>

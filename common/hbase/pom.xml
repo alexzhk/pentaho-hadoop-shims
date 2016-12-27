@@ -12,45 +12,33 @@
     <version>7.1-SNAPSHOT</version>
   </parent>
   <properties>
-    <org.apache.sqoop.version>1.4.6.2.4.0.0-169</org.apache.sqoop.version>
-    <org.apache.hadoop.version>0.20.2</org.apache.hadoop.version>
     <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
+    <org.apache.hbase.version>1.1.1</org.apache.hbase.version>
   </properties>
-  <artifactId>pentaho-hadoop-shims-common-modern</artifactId>
+  <artifactId>pentaho-hadoop-shims-common-hbase</artifactId>
   <packaging>jar</packaging>
   <dependencies>
     <dependency>
       <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-common-hadoop-shim-1.0</artifactId>
+      <artifactId>pentaho-hadoop-shims-common-mapred</artifactId>
       <version>${org.pentaho.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-common-pig-shim-1.0</artifactId>
-      <version>${org.pentaho.version}</version>
+      <groupId>org.apache.hbase</groupId>
+      <artifactId>hbase-common</artifactId>
+      <version>${org.apache.hbase.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-common-hbase-shim-1.1</artifactId>
-      <version>${org.pentaho.version}</version>
+      <groupId>org.apache.hbase</groupId>
+      <artifactId>hbase-client</artifactId>
+      <version>${org.apache.hbase.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-api</artifactId>
-      <version>${org.pentaho.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.hadoop</groupId>
-      <artifactId>hadoop-core</artifactId>
-      <version>${org.apache.hadoop.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.sqoop</groupId>
-      <artifactId>sqoop</artifactId>
-      <version>${org.apache.sqoop.version}</version>
+      <groupId>org.apache.hbase</groupId>
+      <artifactId>hbase-server</artifactId>
+      <version>${org.apache.hbase.version}</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>

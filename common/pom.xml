@@ -51,15 +51,13 @@
   <modules>
     <module>common-shim</module>
     <module>common-hbase-shim</module>
-    <module>common-hbase-shim-test</module>
-    <module>mapred</module>
-    <module>modern</module>
-    <module>hadoop-shim-1.0</module>
-    <module>hbase-pre1.0</module>
-    <module>hbase-1.0</module>
-    <module>hbase-shim-1.0</module>
     <module>hbase-shim-1.1</module>
+    <module>hadoop-shim-1.0</module>
     <module>pig-shim-1.0</module>
     <module>pig-shim-1.1</module>
+    <module>modern</module>
+
+    <module>mapred</module>
+    <module>hbase</module>
   </modules>
 </project>
