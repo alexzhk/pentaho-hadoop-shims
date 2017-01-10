@@ -4,7 +4,8 @@
    http://ant.apache.org/ivy/
    Apache Ivy version: 2.4.0 20141213170938
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.pentaho</groupId>
@@ -15,20 +16,18 @@
     <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
     <org.apache.hbase.version>1.1.1</org.apache.hbase.version>
   </properties>
-  <artifactId>pentaho-hadoop-shims-common-hbase-shim-1.1</artifactId>
+  <artifactId>pentaho-hadoop-shims-hbase-comparators</artifactId>
   <packaging>jar</packaging>
   <dependencies>
     <dependency>
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-hbase-shim</artifactId>
       <version>${org.pentaho.version}</version>
-      <classifier>sources</classifier>
     </dependency>
     <dependency>
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-mapred</artifactId>
       <version>${org.pentaho.version}</version>
-      <classifier>sources</classifier>
     </dependency>
     <dependency>
       <groupId>org.apache.hbase</groupId>

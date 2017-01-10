@@ -23,7 +23,6 @@
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-shim</artifactId>
       <version>${org.pentaho.version}</version>
-      <classifier>sources</classifier>
     </dependency>
     <dependency>
       <groupId>org.pentaho</groupId>
@@ -34,13 +33,11 @@
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-common</artifactId>
       <version>${org.apache.hadoop.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.hive</groupId>
       <artifactId>hive-jdbc</artifactId>
       <version>${org.apache.hive.version}</version>
-      <scope>provided</scope>
     </dependency>
   </dependencies>
 </project>

@@ -22,7 +22,6 @@
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-mapred</artifactId>
       <version>${org.pentaho.version}</version>
-      <classifier>sources</classifier>
     </dependency>
     <dependency>
       <groupId>org.apache.hbase</groupId>

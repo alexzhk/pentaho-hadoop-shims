@@ -13,9 +13,8 @@
   </parent>
   <properties>
     <org.apache.hadoop.version>0.20.2</org.apache.hadoop.version>
-    <org.apache.hbase.version>0.94.18</org.apache.hbase.version>
+    <org.apache.hbase.version>1.1.1</org.apache.hbase.version>
     <com.thoughtworks.xstream.version>1.4.9</com.thoughtworks.xstream.version>
-    <org.apache.hbase2.version>0.98.10.1-hadoop2</org.apache.hbase2.version>
     <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
   </properties>
   <artifactId>pentaho-hadoop-shims-common-mapred</artifactId>
@@ -30,7 +29,6 @@
       <groupId>com.thoughtworks.xstream</groupId>
       <artifactId>xstream</artifactId>
       <version>${com.thoughtworks.xstream.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.hadoop</groupId>
@@ -40,20 +38,20 @@
     </dependency>
     <dependency>
       <groupId>org.apache.hbase</groupId>
-      <artifactId>hbase</artifactId>
+      <artifactId>hbase-common</artifactId>
       <version>${org.apache.hbase.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.hbase</groupId>
-      <artifactId>hbase-common</artifactId>
-      <version>${org.apache.hbase2.version}</version>
+      <artifactId>hbase-client</artifactId>
+      <version>${org.apache.hbase.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.hbase</groupId>
-      <artifactId>hbase-client</artifactId>
-      <version>${org.apache.hbase2.version}</version>
+      <artifactId>hbase-server</artifactId>
+      <version>${org.apache.hbase.version}</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>

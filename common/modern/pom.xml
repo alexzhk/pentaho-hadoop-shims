@@ -23,21 +23,16 @@
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-hadoop-shim-1.0</artifactId>
       <version>${org.pentaho.version}</version>
-      <classifier>sources</classifier>
     </dependency>
     <dependency>
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-pig-shim-1.0</artifactId>
       <version>${org.pentaho.version}</version>
-      <classifier>sources</classifier>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-common-hbase-shim-1.1</artifactId>
-      <classifier>sources</classifier>
+      <artifactId>pentaho-hadoop-shims-hbase-comparators</artifactId>
       <version>${org.pentaho.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.pentaho</groupId>
@@ -54,7 +49,6 @@
       <groupId>org.apache.sqoop</groupId>
       <artifactId>sqoop</artifactId>
       <version>${org.apache.sqoop.version}</version>
-      <scope>provided</scope>
     </dependency>
   </dependencies>
 

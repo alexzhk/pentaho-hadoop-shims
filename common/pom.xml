@@ -51,7 +51,7 @@
   <modules>
     <module>common-shim</module>
     <module>common-hbase-shim</module>
-    <module>hbase-shim-1.1</module>
+    <module>hbase-comparators</module>
     <module>hadoop-shim-1.0</module>
     <module>pig-shim-1.0</module>
     <module>pig-shim-1.1</module>
@@ -62,33 +62,6 @@
   </modules>
   <build>
     <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <groupId>org.apache.maven.plugins</groupId>
-        <executions>
-          <execution>
-            <id>default-compile</id>
-            <phase>none</phase>
-          </execution>
-          <execution>
-            <id>default-testCompile</id>
-            <phase>none</phase>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <skip>true</skip>
-        </configuration>
-        <executions>
-          <execution>
-            <id>default-jar</id>
-            <phase>none</phase>
-          </execution>
-        </executions>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
@@ -101,6 +74,16 @@
               <goal>jar-no-fork</goal>
               <goal>test-jar-no-fork</goal>
             </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <executions>
+          <execution>
+            <id>default-testCompile</id>
+            <phase>none</phase>
           </execution>
         </executions>
       </plugin>

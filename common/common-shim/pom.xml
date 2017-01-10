@@ -16,7 +16,7 @@
     <org.apache.sqoop.version>1.4.6.2.4.0.0-169</org.apache.sqoop.version>
     <org.apache.pig.version>0.8.0</org.apache.pig.version>
     <org.mockito.version>1.9.5</org.mockito.version>
-    <org.apache.hbase.version>0.98.10.1-hadoop2</org.apache.hbase.version>
+    <org.apache.hbase.version>1.1.1</org.apache.hbase.version>
     <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
   </properties>
   <artifactId>pentaho-hadoop-shims-common-shim</artifactId>
@@ -38,26 +38,22 @@
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-mapred</artifactId>
       <version>${org.pentaho.version}</version>
-      <classifier>sources</classifier>
     </dependency>
     <dependency>
       <groupId>org.apache.hive</groupId>
       <artifactId>hive-jdbc</artifactId>
       <version>${org.apache.hive.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.pig</groupId>
       <artifactId>pig</artifactId>
       <version>${org.apache.pig.version}</version>
-      <scope>provided</scope>
     </dependency>
     <!--cloudera oriented sqoop, used in shims in CommonSqoopShim-->
     <dependency>
       <groupId>org.apache.sqoop</groupId>
       <artifactId>sqoop</artifactId>
       <version>${org.apache.sqoop.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.hbase</groupId>

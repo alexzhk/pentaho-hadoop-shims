@@ -51,7 +51,7 @@
     </dependency>
     <dependency>
       <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-common-hbase-shim-1.1</artifactId>
+      <artifactId>pentaho-hadoop-shims-hbase-comparators</artifactId>
       <version>${org.pentaho.version}</version>
       <classifier>sources</classifier>
     </dependency>
@@ -137,7 +137,7 @@
                   </artifactItem>
                   <artifactItem>
                     <groupId>org.pentaho</groupId>
-                    <artifactId>pentaho-hadoop-shims-common-hbase-shim-1.1</artifactId>
+                    <artifactId>pentaho-hadoop-shims-hbase-comparators</artifactId>
                     <version>${org.pentaho.version}</version>
                     <classifier>sources</classifier>
                     <overWrite>false</overWrite>
@@ -161,7 +161,7 @@
                   </artifactItem>
                   <artifactItem>
                     <groupId>org.pentaho</groupId>
-                    <artifactId>pentaho-hadoop-shims-common-hbase-shim-1.1</artifactId>
+                    <artifactId>pentaho-hadoop-shims-hbase-comparators</artifactId>
                     <version>${org.pentaho.version}</version>
                     <classifier>test-sources</classifier>
                     <overWrite>false</overWrite>
