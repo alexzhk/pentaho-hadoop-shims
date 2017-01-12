@@ -51,7 +51,7 @@
                 <artifactItem>
                   <groupId>pentaho</groupId>
                   <artifactId>oss-licenses</artifactId>
-                  <version>${pentaho.version}</version>
+                  <version>${dependency.oss-licenses.revision}</version>
                   <type>zip</type>
                   <overWrite>false</overWrite>
                   <outputDirectory>${oss.license.directory}</outputDirectory>

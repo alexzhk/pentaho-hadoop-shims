@@ -49,6 +49,7 @@
       <groupId>org.apache.sqoop</groupId>
       <artifactId>sqoop</artifactId>
       <version>${org.apache.sqoop.version}</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 

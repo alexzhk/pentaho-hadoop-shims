@@ -704,6 +704,7 @@
       <artifactId>pentaho-hadoop-shims-common-pig-shim-1.1</artifactId>
       <version>${org.pentaho.version}</version>
       <classifier>sources</classifier>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
   <build>
