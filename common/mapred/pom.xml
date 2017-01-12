@@ -11,14 +11,14 @@
     <artifactId>pentaho-hadoop-shims-common</artifactId>
     <version>7.1-SNAPSHOT</version>
   </parent>
+  <artifactId>pentaho-hadoop-shims-common-mapred</artifactId>
+  <packaging>jar</packaging>
   <properties>
     <org.apache.hadoop.version>0.20.2</org.apache.hadoop.version>
     <org.apache.hbase.version>1.1.1</org.apache.hbase.version>
     <com.thoughtworks.xstream.version>1.4.9</com.thoughtworks.xstream.version>
     <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
   </properties>
-  <artifactId>pentaho-hadoop-shims-common-mapred</artifactId>
-  <packaging>jar</packaging>
   <dependencies>
     <dependency>
       <groupId>org.pentaho</groupId>

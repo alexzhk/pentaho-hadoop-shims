@@ -11,12 +11,12 @@
     <artifactId>pentaho-hadoop-shims-common</artifactId>
     <version>7.1-SNAPSHOT</version>
   </parent>
+  <artifactId>pentaho-hadoop-shims-common-hbase</artifactId>
+  <packaging>jar</packaging>
   <properties>
     <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
     <org.apache.hbase.version>1.1.1</org.apache.hbase.version>
   </properties>
-  <artifactId>pentaho-hadoop-shims-common-hbase</artifactId>
-  <packaging>jar</packaging>
   <dependencies>
     <dependency>
       <groupId>org.pentaho</groupId>

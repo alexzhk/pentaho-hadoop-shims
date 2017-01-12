@@ -11,6 +11,8 @@
     <artifactId>pentaho-hadoop-shims-common</artifactId>
     <version>7.1-SNAPSHOT</version>
   </parent>
+  <artifactId>pentaho-hadoop-shims-common-shim</artifactId>
+  <packaging>jar</packaging>
   <properties>
     <org.apache.hive.version>0.13.1</org.apache.hive.version>
     <org.apache.sqoop.version>1.4.6.2.4.0.0-169</org.apache.sqoop.version>
@@ -19,8 +21,6 @@
     <org.apache.hbase.version>1.1.1</org.apache.hbase.version>
     <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
   </properties>
-  <artifactId>pentaho-hadoop-shims-common-shim</artifactId>
-  <packaging>jar</packaging>
   <dependencies>
     <dependency>
       <groupId>org.pentaho</groupId>
@@ -81,5 +81,18 @@
       </exclusions>
     </dependency>
   </dependencies>
-
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <executions>
+          <execution>
+            <id>default-testCompile</id>
+            <phase>none</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

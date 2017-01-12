@@ -11,13 +11,13 @@
     <artifactId>pentaho-hadoop-shims-common</artifactId>
     <version>7.1-SNAPSHOT</version>
   </parent>
+  <artifactId>pentaho-hadoop-shims-common-hadoop-shim-1.0</artifactId>
+  <packaging>jar</packaging>
   <properties>
     <org.apache.hive.version>2.1.0</org.apache.hive.version>
     <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
     <org.apache.hadoop.version>2.2.0</org.apache.hadoop.version>
   </properties>
-  <artifactId>pentaho-hadoop-shims-common-hadoop-shim-1.0</artifactId>
-  <packaging>jar</packaging>
   <dependencies>
     <dependency>
       <groupId>org.pentaho</groupId>

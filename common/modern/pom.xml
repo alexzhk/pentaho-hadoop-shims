@@ -11,13 +11,13 @@
     <artifactId>pentaho-hadoop-shims-common</artifactId>
     <version>7.1-SNAPSHOT</version>
   </parent>
+  <artifactId>pentaho-hadoop-shims-common-modern</artifactId>
+  <packaging>jar</packaging>
   <properties>
     <org.apache.sqoop.version>1.4.6.2.4.0.0-169</org.apache.sqoop.version>
     <org.apache.hadoop.version>0.20.2</org.apache.hadoop.version>
     <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
   </properties>
-  <artifactId>pentaho-hadoop-shims-common-modern</artifactId>
-  <packaging>jar</packaging>
   <dependencies>
     <dependency>
       <groupId>org.pentaho</groupId>

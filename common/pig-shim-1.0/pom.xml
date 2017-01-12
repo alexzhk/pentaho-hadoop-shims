@@ -11,13 +11,13 @@
     <artifactId>pentaho-hadoop-shims-common</artifactId>
     <version>7.1-SNAPSHOT</version>
   </parent>
+  <artifactId>pentaho-hadoop-shims-common-pig-shim-1.0</artifactId>
+  <packaging>jar</packaging>
   <properties>
     <org.apache.pig.version>0.8.1</org.apache.pig.version>
     <org.apache.hadoop.version>0.20.2</org.apache.hadoop.version>
     <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
   </properties>
-  <artifactId>pentaho-hadoop-shims-common-pig-shim-1.0</artifactId>
-  <packaging>jar</packaging>
   <dependencies>
     <dependency>
       <groupId>org.pentaho</groupId>
