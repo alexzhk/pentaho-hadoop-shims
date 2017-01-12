@@ -18,27 +18,22 @@
   <properties>
     <log4j.version>1.2.17</log4j.version>
     <org.apache.hbase.version>1.2.0-cdh5.8.0</org.apache.hbase.version>
-    <junit.version>4.11</junit.version>
     <org.apache.pig.version>0.12.0-cdh5.8.0</org.apache.pig.version>
     <org.apache.zookeeper.version>3.4.5-cdh5.8.0</org.apache.zookeeper.version>
     <org.codehaus.jackson.version>1.9.2</org.codehaus.jackson.version>
     <jline.version>2.12</jline.version>
-    <org.mockito.version>1.9.5</org.mockito.version>
     <org.apache.httpcomponents.version>4.2.5</org.apache.httpcomponents.version>
-    <pentaho-kettle.version>7.1-SNAPSHOT</pentaho-kettle.version>
     <org.apache.hive.version>1.1.0-cdh5.8.0</org.apache.hive.version>
     <dk.brics.automaton.version>1.11-8</dk.brics.automaton.version>
     <xerces.version>2.9.1</xerces.version>
     <commons-httpclient.version>3.0.1</commons-httpclient.version>
     <org.apache.hadoop.version>2.6.0-cdh5.8.0</org.apache.hadoop.version>
     <commons-collections.version>3.2.2</commons-collections.version>
-    <org.safehaus.jug.version>2.0.0</org.safehaus.jug.version>
     <org.apache.sqoop.version>1.4.6-cdh5.8.0</org.apache.sqoop.version>
     <org.apache.curator.version>2.6.0</org.apache.curator.version>
     <pentaho-hadoop2-windows-patch.version>08072014</pentaho-hadoop2-windows-patch.version>
     <com.fasterxml.jackson.core.version>2.3.1</com.fasterxml.jackson.core.version>
     <org.jamon.version>2.3.1</org.jamon.version>
-    <com.yammer.metrics.version>2.2.0</com.yammer.metrics.version>
     <org.apache.htrace.version>3.2.0-incubating</org.apache.htrace.version>
     <com.fasterxml.jackson.core2.version>2.3.0</com.fasterxml.jackson.core2.version>
     <org.sonatype.sisu.inject.version>2.2.1-v20090111</org.sonatype.sisu.inject.version>
@@ -53,27 +48,20 @@
     <commons-codec.version>1.4</commons-codec.version>
     <asm.version>3.2</asm.version>
     <commons-io.version>2.4</commons-io.version>
-    <commons-lang.version>2.6</commons-lang.version>
     <stax.version>1.0.1</stax.version>
   </properties>
   <dependencies>
     <dependency>
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-api</artifactId>
-      <version>${org.pentaho.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>pentaho-kettle</groupId>
       <artifactId>kettle-core</artifactId>
-      <version>${pentaho-kettle.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>pentaho-kettle</groupId>
       <artifactId>kettle-engine</artifactId>
-      <version>${pentaho-kettle.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.thoughtworks.xstream</groupId>
@@ -96,14 +84,6 @@
     <dependency>
       <groupId>commons-lang</groupId>
       <artifactId>commons-lang</artifactId>
-      <version>${commons-lang.version}</version>
-      <scope>compile</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.apache.hadoop</groupId>
@@ -300,14 +280,6 @@
     <dependency>
       <groupId>com.yammer.metrics</groupId>
       <artifactId>metrics-core</artifactId>
-      <version>${com.yammer.metrics.version}</version>
-      <scope>compile</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.apache.zookeeper</groupId>
@@ -324,14 +296,6 @@
     <dependency>
       <groupId>pentaho</groupId>
       <artifactId>pentaho-hdfs-vfs</artifactId>
-      <version>${pentaho.version}</version>
-      <scope>compile</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.apache.hive</groupId>
@@ -450,33 +414,19 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.safehaus.jug</groupId>
       <artifactId>jug-lgpl</artifactId>
-      <version>${org.safehaus.jug.version}</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-api</artifactId>
-      <version>${org.pentaho.version}</version>
       <classifier>tests</classifier>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-all</artifactId>
-      <version>${org.mockito.version}</version>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>commons-collections</groupId>
@@ -487,9 +437,7 @@
     <dependency>
       <groupId>pentaho</groupId>
       <artifactId>oss-licenses</artifactId>
-      <version>${pentaho.version}</version>
       <type>zip</type>
-      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>commons-codec</groupId>
