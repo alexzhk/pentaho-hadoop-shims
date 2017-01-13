@@ -17,6 +17,7 @@
     <dependency.kettle.revision>7.1-SNAPSHOT</dependency.kettle.revision>
     <dependency.hadoop-shims-api.revision>7.1-SNAPSHOT</dependency.hadoop-shims-api.revision>
     <dependency.oss-licenses.revision>7.1-SNAPSHOT</dependency.oss-licenses.revision>
+    <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
   </properties>
 
   <modules>

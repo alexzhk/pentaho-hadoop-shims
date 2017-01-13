@@ -13,42 +13,26 @@
   </parent>
   <artifactId>pentaho-hadoop-shims-common-mapred</artifactId>
   <packaging>jar</packaging>
-  <properties>
-    <org.apache.hadoop.version>0.20.2</org.apache.hadoop.version>
-    <org.apache.hbase.version>1.1.1</org.apache.hbase.version>
-    <com.thoughtworks.xstream.version>1.4.9</com.thoughtworks.xstream.version>
-    <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
-  </properties>
   <dependencies>
     <dependency>
       <groupId>com.thoughtworks.xstream</groupId>
       <artifactId>xstream</artifactId>
-      <version>${com.thoughtworks.xstream.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-core</artifactId>
-      <version>${org.apache.hadoop.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.hbase</groupId>
       <artifactId>hbase-common</artifactId>
-      <version>${org.apache.hbase.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.hbase</groupId>
       <artifactId>hbase-client</artifactId>
-      <version>${org.apache.hbase.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.hbase</groupId>
       <artifactId>hbase-server</artifactId>
-      <version>${org.apache.hbase.version}</version>
-      <scope>provided</scope>
     </dependency>
   </dependencies>
 
