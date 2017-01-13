@@ -13,6 +13,10 @@
 
   <properties>
     <xerces.version>2.8.1</xerces.version>
+    <dependency.pentaho-hdfs-vfs.revision>7.1-SNAPSHOT</dependency.pentaho-hdfs-vfs.revision>
+    <dependency.kettle.revision>7.1-SNAPSHOT</dependency.kettle.revision>
+    <dependency.hadoop-shims-api.revision>7.1-SNAPSHOT</dependency.hadoop-shims-api.revision>
+    <dependency.oss-licenses.revision>7.1-SNAPSHOT</dependency.oss-licenses.revision>
   </properties>
 
   <modules>
@@ -20,6 +24,48 @@
     <module>common</module>
     <module>shims</module>
   </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>pentaho</groupId>
+        <artifactId>pentaho-hdfs-vfs</artifactId>
+        <version>${dependency.pentaho-hdfs-vfs.revision}</version>
+        <scope>compile</scope>
+      </dependency>
+      <dependency>
+        <groupId>pentaho-kettle</groupId>
+        <artifactId>kettle-core</artifactId>
+        <version>${dependency.kettle.revision}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>pentaho-kettle</groupId>
+        <artifactId>kettle-engine</artifactId>
+        <version>${dependency.kettle.revision}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.pentaho</groupId>
+        <artifactId>pentaho-hadoop-shims-api</artifactId>
+        <version>${dependency.hadoop-shims-api.revision}</version>
+        <classifier>tests</classifier>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.pentaho</groupId>
+        <artifactId>pentaho-hadoop-shims-api</artifactId>
+        <version>${dependency.hadoop-shims-api.revision}</version>
+      </dependency>
+      <dependency>
+        <groupId>pentaho</groupId>
+        <artifactId>oss-licenses</artifactId>
+        <version>${dependency.oss-licenses.revision}</version>
+        <type>zip</type>
+        <optional>true</optional>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <build>
     <resources>
       <resource>
@@ -32,5 +78,17 @@
         </includes>
       </resource>
     </resources>
+    <plugins>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <workingDirectory>${project.build.directory}</workingDirectory>
+          <classpathDependencyExcludes>pentaho:hadoop2-windows-patch</classpathDependencyExcludes>
+          <systemPropertyVariables>
+            <org.pentaho.hadoop.shims.check.hive1>false</org.pentaho.hadoop.shims.check.hive1>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>

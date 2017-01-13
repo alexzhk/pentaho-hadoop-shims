@@ -15,13 +15,14 @@
   <packaging>jar</packaging>
   <properties>
     <org.apache.sqoop.version>1.4.6.2.4.0.0-169</org.apache.sqoop.version>
+    <org.apache.hive.version>2.1.0</org.apache.hive.version>
     <org.apache.hadoop.version>0.20.2</org.apache.hadoop.version>
     <org.pentaho.version>7.1-SNAPSHOT</org.pentaho.version>
   </properties>
   <dependencies>
     <dependency>
       <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-common-hadoop-shim-1.0</artifactId>
+      <artifactId>pentaho-hadoop-shims-common-hadoop-shim</artifactId>
       <version>${org.pentaho.version}</version>
     </dependency>
     <dependency>
@@ -35,11 +36,6 @@
       <version>${org.pentaho.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-api</artifactId>
-      <version>${org.pentaho.version}</version>
-    </dependency>
-    <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-core</artifactId>
       <version>${org.apache.hadoop.version}</version>
@@ -49,6 +45,12 @@
       <groupId>org.apache.sqoop</groupId>
       <artifactId>sqoop</artifactId>
       <version>${org.apache.sqoop.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hive</groupId>
+      <artifactId>hive-jdbc</artifactId>
+      <version>${org.apache.hive.version}</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>

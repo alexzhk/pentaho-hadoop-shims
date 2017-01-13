@@ -11,7 +11,7 @@
     <artifactId>pentaho-hadoop-shims-common</artifactId>
     <version>7.1-SNAPSHOT</version>
   </parent>
-  <artifactId>pentaho-hadoop-shims-common-hbase-shim</artifactId>
+  <artifactId>pentaho-hadoop-shims-common-hbase-comparators-api</artifactId>
   <packaging>jar</packaging>
   <properties>
     <org.apache.hadoop.version>0.20.2</org.apache.hadoop.version>

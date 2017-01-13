@@ -24,18 +24,6 @@
   <dependencies>
     <dependency>
       <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-api</artifactId>
-      <version>${org.pentaho.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-api</artifactId>
-      <version>${org.pentaho.version}</version>
-      <type>test-jar</type>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.pentaho</groupId>
       <artifactId>pentaho-hadoop-shims-common-mapred</artifactId>
       <version>${org.pentaho.version}</version>
     </dependency>

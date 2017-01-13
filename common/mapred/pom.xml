@@ -21,11 +21,6 @@
   </properties>
   <dependencies>
     <dependency>
-      <groupId>org.pentaho</groupId>
-      <artifactId>pentaho-hadoop-shims-api</artifactId>
-      <version>${org.pentaho.version}</version>
-    </dependency>
-    <dependency>
       <groupId>com.thoughtworks.xstream</groupId>
       <artifactId>xstream</artifactId>
       <version>${com.thoughtworks.xstream.version}</version>

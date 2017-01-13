@@ -10,30 +10,32 @@
   <packaging>pom</packaging>
   <properties>
     <org.mockito.version>1.10.19</org.mockito.version>
-    <pentaho-kettle.version>7.1-SNAPSHOT</pentaho-kettle.version>
-    <pentaho.version>7.1-SNAPSHOT</pentaho.version>
   </properties>
   <dependencies>
     <dependency>
       <groupId>pentaho-kettle</groupId>
       <artifactId>kettle-core</artifactId>
-      <version>${pentaho-kettle.version}</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>pentaho-kettle</groupId>
       <artifactId>kettle-engine</artifactId>
-      <version>${pentaho-kettle.version}</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>pentaho</groupId>
       <artifactId>pentaho-hdfs-vfs</artifactId>
-      <version>${pentaho.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>hadoop-core</artifactId>
-        </exclusion>
-      </exclusions>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.pentaho</groupId>
+      <artifactId>pentaho-hadoop-shims-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.pentaho</groupId>
+      <artifactId>pentaho-hadoop-shims-api</artifactId>
+      <classifier>tests</classifier>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
@@ -50,9 +52,9 @@
   </dependencies>
   <modules>
     <module>common-shim</module>
-    <module>common-hbase-shim</module>
+    <module>common-hbase-comparators-api</module>
     <module>hbase-comparators</module>
-    <module>hadoop-shim-1.0</module>
+    <module>hadoop-shim</module>
     <module>pig-shim-1.0</module>
     <module>pig-shim-1.1</module>
     <module>modern</module>
