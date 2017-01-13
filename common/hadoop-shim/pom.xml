@@ -32,7 +32,6 @@
     <dependency>
       <groupId>org.apache.hive</groupId>
       <artifactId>hive-jdbc</artifactId>
-      <version>${org.apache.hive.version}</version>
     </dependency>
   </dependencies>
 </project>
