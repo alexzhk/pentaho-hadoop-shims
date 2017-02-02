@@ -180,7 +180,7 @@ public class CaptureResultSetInvocationHandler<T extends Statement> implements I
    *
    * @return null is returned if the result set is null
    * @throws SQLException if an error occurs while getting metadata
-   * @see java.sql.PreparedStatement#getMetaData()
+   * @see PreparedStatement#getMetaData()
    */
 
   public ResultSetMetaData getMetaData() {

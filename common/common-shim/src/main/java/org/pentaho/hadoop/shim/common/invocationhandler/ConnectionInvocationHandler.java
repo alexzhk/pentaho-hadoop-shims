@@ -137,7 +137,7 @@ public class ConnectionInvocationHandler implements InvocationHandler {
    * @param args the arguments
    * @return the statement
    * @throws SQLException the sQL exception
-   * @see java.sql.Connection#createStatement(int, int)
+   * @see Connection#createStatement(int, int)
    */
   public Statement createStatement( Connection c, Object[] args ) throws SQLException {
     if ( c.isClosed() ) {
