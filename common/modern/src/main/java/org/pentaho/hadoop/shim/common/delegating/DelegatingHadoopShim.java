@@ -91,6 +91,10 @@ public class DelegatingHadoopShim implements HadoopShim, HasHadoopAuthorizationS
     return delegate.createConfiguration();
   }
 
+  @Override public Configuration createSecConfiguration() {
+    return delegate.createSecConfiguration();
+  }
+
   @Override
   public FileSystem getFileSystem( Configuration conf ) throws IOException {
     return delegate.getFileSystem( conf );

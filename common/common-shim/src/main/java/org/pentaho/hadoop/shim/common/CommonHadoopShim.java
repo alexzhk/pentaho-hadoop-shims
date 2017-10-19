@@ -205,6 +205,10 @@ public class CommonHadoopShim implements HadoopShim {
     }
   }
 
+  @Override public Configuration createSecConfiguration() {
+    return createConfiguration();
+  }
+
   @Override
   public FileSystem getFileSystem( Configuration conf ) throws IOException {
     // Set the context class loader when instantiating the configuration

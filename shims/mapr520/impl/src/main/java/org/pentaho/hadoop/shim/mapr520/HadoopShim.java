@@ -22,6 +22,7 @@
 
 package org.pentaho.hadoop.shim.mapr520;
 
+import org.apache.hadoop.security.UserGroupInformation;
 import org.pentaho.hadoop.shim.HadoopConfiguration;
 import org.pentaho.hadoop.shim.HadoopConfigurationFileSystemManager;
 import org.pentaho.hadoop.shim.api.Configuration;
@@ -90,6 +91,28 @@ public class HadoopShim extends CommonHadoopShim {
 
   @Override
   public org.pentaho.hadoop.shim.api.Configuration createConfiguration() {
+    org.pentaho.hadoop.shim.api.Configuration result;
+    // Set the context class loader when instantiating the configuration
+    // since org.apache.hadoop.conf.Configuration uses it to load resources
+    ClassLoader cl = Thread.currentThread().getContextClassLoader();
+    Thread.currentThread().setContextClassLoader( getClass().getClassLoader() );
+    try {
+      org.apache.hadoop.conf.Configuration conf = new org.apache.hadoop.conf.Configuration();
+      if ( conf.get( "hadoop.security.authentication" ).equals( UserGroupInformation.AuthenticationMethod.CUSTOM.name() ) ) {
+       return null;
+      }
+      result = new org.pentaho.hadoop.shim.mapr520.ConfigurationProxyV2();
+    } catch ( IOException e ) {
+      throw new RuntimeException( "Unable to create configuration for new mapreduce api: ", e );
+    } finally {
+      Thread.currentThread().setContextClassLoader( cl );
+    }
+    ShimUtils.asConfiguration( result ).addResource( "hbase-site.xml" );
+    return result;
+  }
+
+  @Override
+  public org.pentaho.hadoop.shim.api.Configuration createSecConfiguration() {
     org.pentaho.hadoop.shim.api.Configuration result;
     // Set the context class loader when instantiating the configuration
     // since org.apache.hadoop.conf.Configuration uses it to load resources

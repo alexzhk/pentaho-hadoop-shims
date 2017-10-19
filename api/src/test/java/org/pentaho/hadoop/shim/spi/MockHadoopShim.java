@@ -66,6 +66,10 @@ public class MockHadoopShim implements HadoopShim {
     return null;
   }
 
+  @Override public Configuration createSecConfiguration() {
+    return null;
+  }
+
   @Override
   public FileSystem getFileSystem( Configuration conf ) throws IOException {
     return null;

@@ -21,6 +21,8 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.filecache.DistributedCache;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.security.SecurityUtil;
+import org.apache.hadoop.security.UserGroupInformation;
 import org.pentaho.hadoop.shim.HadoopConfiguration;
 import org.pentaho.hadoop.shim.HadoopConfigurationFileSystemManager;
 import org.pentaho.hadoop.shim.api.mapred.RunningJob;
@@ -84,6 +86,24 @@ public class HadoopShimImpl extends CommonHadoopShim {
 
   @Override
   public org.pentaho.hadoop.shim.api.Configuration createConfiguration() {
+    // Set the context class loader when instantiating the configuration
+    // since org.apache.hadoop.conf.Configuration uses it to load resources
+    ClassLoader cl = Thread.currentThread().getContextClassLoader();
+    Thread.currentThread().setContextClassLoader( getClass().getClassLoader() );
+    try {
+      org.apache.hadoop.conf.Configuration conf = new org.apache.hadoop.conf.Configuration(  );
+      SecurityUtil.setAuthenticationMethod( null, conf );
+      UserGroupInformation.setConfiguration( conf );
+      return new ConfigurationProxyV2();
+    } catch ( IOException e ) {
+      throw new RuntimeException( "Unable to create configuration for new mapreduce api: ", e );
+    } finally {
+      Thread.currentThread().setContextClassLoader( cl );
+    }
+  }
+
+  @Override
+  public org.pentaho.hadoop.shim.api.Configuration createSecConfiguration() {
     // Set the context class loader when instantiating the configuration
     // since org.apache.hadoop.conf.Configuration uses it to load resources
     ClassLoader cl = Thread.currentThread().getContextClassLoader();

@@ -103,6 +103,14 @@ public interface HadoopShim extends PentahoHadoopShim {
   Configuration createConfiguration();
 
   /**
+   * Creates a Configuration with default properties loaded from the Hadoop configuration.
+   *
+   * @return Configuration with default properties loaded and any additional properties set specific to this Hadoop
+   * configuration.
+   */
+  Configuration createSecConfiguration();
+
+  /**
    * Look up a file system abstraction using the configuration provided
    *
    * @param conf Configuration properties
