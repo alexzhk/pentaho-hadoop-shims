@@ -116,6 +116,16 @@
       <artifactId>htrace-core</artifactId>
       <version>3.2.0-incubating</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.hive</groupId>
+      <artifactId>hive-jdbc</artifactId>
+      <version>${org.apache.hive.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.thrift</groupId>
+      <artifactId>libthrift</artifactId>
+      <version>0.9.0-cdh5-2</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -303,13 +313,19 @@
               org.pentaho.hadoop.shim.cdh57,
               org.apache.avro.*,
               org.apache.jute.*,
+              org.apache.hive.*,
+              org.pentaho.hbase.shim.common.*,
+              org.pentaho.hadoop.shim.common.*,
+              org.pentaho.hadoop.hbase.factory,
+              org.pentaho.hbase.factory.*,
+              org.pentaho.hadoop.shim.common.delegating.*,
               <!--htrace inside package Tracer not packed-->
               <!--hbase-default.xml needed - not included-->
               io.netty.*,
               com.yammer.metrics.*
             </Export-Package>
             <Include-Resource>target/dependencies/hadoop-common,target/dependencies/hbase-common/hbase-default.xml,{maven-resources}</Include-Resource>
-            <Embed-Dependency>hadoop-common;*;scope=compile|runtime;artifactId=!pentaho*|xerces*|xml-api*|guava
+            <Embed-Dependency>libthrift;hive-jdbc;hadoop-common;*;scope=compile|runtime;artifactId=!pentaho*|xerces*|xml-api*|guava
             </Embed-Dependency>
             <!--<Embed-Transitive>true</Embed-Transitive>-->
             <Bundle-ClassPath>.,{maven-dependencies},hadoop-common-2.6.0-cdh5.11.0.jar</Bundle-ClassPath>
