@@ -91,7 +91,22 @@ public class NoOpHadoopAuthorizationService implements HadoopAuthorizationServic
   @SuppressWarnings( "unchecked" )
   @Override
   public synchronized <T extends PentahoHadoopShim> T getShim( Class<T> clazz ) {
-    return (T) shimMap.get( clazz );
+
+
+    ClassLoader cl = Thread.currentThread().getContextClassLoader();
+    Thread.currentThread().setContextClassLoader( getClass().getClassLoader() );
+    try {
+      org.apache.hadoop.conf.Configuration conf = new org.apache.hadoop.conf.Configuration();
+      String prop = conf.get( "hadoop.security.authentication" ).toLowerCase();
+      if ( prop.equals( "custom" ) || prop.equals( "kerberos" ) ) {
+        return null;
+      } else {
+        return (T) shimMap.get( clazz );
+      }
+    } finally {
+      Thread.currentThread().setContextClassLoader( cl );
+    }
+    //return (T) shimMap.get( clazz );
   }
 
   public PentahoHadoopShim getFormatShim() {
