@@ -118,6 +118,11 @@ public class DelegatingHadoopShim implements HadoopShim, HasHadoopAuthorizationS
     return delegate.submitJob( c );
   }
 
+  @Override
+  public void verifyACL() {
+    delegate.verifyACL();
+  }
+
   @SuppressWarnings( "deprecation" )
   @Override
   public Class<?> getHadoopWritableCompatibleClass( ValueMetaInterface kettleType ) {

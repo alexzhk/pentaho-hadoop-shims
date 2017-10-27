@@ -97,6 +97,10 @@ public class MockHadoopShim implements HadoopShim {
     return null;
   }
 
+  @Override public void verifyACL() {
+
+  }
+
   @Override
   public Class<?> getHadoopWritableCompatibleClass( ValueMetaInterface kettleType ) {
     return null;

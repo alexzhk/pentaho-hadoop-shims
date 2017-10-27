@@ -155,6 +155,8 @@ public interface HadoopShim extends PentahoHadoopShim {
    */
   RunningJob submitJob( Configuration c ) throws IOException;
 
+  void verifyACL();
+
   /**
    * Determine the Hadoop writable type to pass Kettle type back to Hadoop as.
    *
