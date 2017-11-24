@@ -28,6 +28,7 @@
     <dependency.kettle.revision>8.1-SNAPSHOT</dependency.kettle.revision>
     <org.powermock.version>1.6.2</org.powermock.version>
     <eula-wrap_assign-deps-to-properties-phase></eula-wrap_assign-deps-to-properties-phase>
+    <pentaho-osgi-bundles.osgi.version>8.1.SNAPSHOT</pentaho-osgi-bundles.osgi.version>
   </properties>
 
   <dependencyManagement>
